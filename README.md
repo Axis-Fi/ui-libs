@@ -1,6 +1,6 @@
-# Axis Frontend Utilities
+# Axis Frontend libraries
 
-Monorepo for Axis Finance frontend utilities [turbo](https://turbo.build/repo)
+Monorepo for Axis Finance frontend libraries, using [turbo](https://turbo.build/repo).
 
 ## Dev Setup
 
