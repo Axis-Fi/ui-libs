@@ -4,28 +4,47 @@ Convenience library for interacting with the Axis protocol.
 
 ## Quickstart
 
+This library expects `react`, `viem` and `@tanstack/react-query` as peer dependencies.
+
 ```bash
-pnpm add @axis/sdk react viem @tanstack/react-query
+pnpm add @axis-finance/sdk react viem @tanstack/react-query
 ```
 
 ## Initialize the SDK
 
 ```ts sdk.ts
-import { createSdk } from "@axis/sdk";
+import { createSdk } from "@axis-finance/sdk";
 
 export const sdk = createSdk();
 ```
 
-## Wrap app in `<OriginSdkProvider />`
+## Wrap your app with `<QueryClientProvider>` (if not already done)
+
+```tsx app.tsx
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+export const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <>{/* ... */}</>
+  </QueryClientProvider>
+);
+```
+
+## Wrap your app with `<OriginSdkProvider>`
 
 ```tsx app.tsx
 import { sdk } from "./sdk";
-import { OriginSdkProvider } from "@axis/sdk/react";
+import { OriginSdkProvider } from "@axis-finance/sdk/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const App = () => (
-  <OriginSdkProvider sdk={sdk}>
-    <>{/* ... */}</>
-  </OriginSdkProvider>
+  <QueryClientProvider client={queryClient}>
+    <OriginSdkProvider sdk={sdk}>
+      <>{/* ... */}</>
+    </OriginSdkProvider>
+  </QueryClientProvider>
 );
 ```
 
@@ -36,7 +55,7 @@ export const App = () => (
 Queries return the standard [`@tanstack/react-query`](https://tanstack.com/query/latest) [`useQuery()` result type](https://tanstack.com/query/latest/docs/framework/react/reference/useQuery).
 
 ```tsx launch.tsx
-import { useLaunchQuery } from "@axis/sdk/react";
+import { useLaunchQuery } from "@axis-finance/sdk/react";
 
 export const Launch = () => {
   const {
@@ -50,7 +69,7 @@ export const Launch = () => {
   }
 
   if (status === "error") {
-    return <div>Error resolving launch: {error.message}</div>;
+    return <div>Error resolving launch: {error?.message}</div>;
   }
 
   return (
@@ -67,11 +86,11 @@ export const Launch = () => {
 Contract calls [return a common interface](./src/react/hooks/use-axis-transaction.ts) for Axis contract interactions.
 
 ```tsx bid.tsx
-import { useBid } from "@axis/sdk/react";
+import { useBid } from "@axis-finance/sdk/react";
 
 export const Bid = () => {
-  import { useBid } from "@axis/sdk/react";
-  import type { BidParams } from "@axis/sdk";
+  import { useBid } from "@axis-finance/sdk/react";
+  import type { BidParams } from "@axis-finance/sdk";
   import { formatUnits } from "viem";
 
   const bidParams: BidParams = {
@@ -128,7 +147,7 @@ By default, the SDK has default services for the following:
 You can override these services by passing in your own URLs in the SDK config:
 
 ```ts sdk.ts
-import { createSdk } from "@axis/sdk";
+import { createSdk } from "@axis-finance/sdk";
 
 export const sdk = createSdk({
   cloak: {

@@ -1,3 +1,4 @@
+import type { UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
 import {
   type GetBatchAuctionLotQuery,
   useGetBatchAuctionLotQuery,
@@ -6,17 +7,23 @@ import { deployments } from "@repo/deployments";
 import { getLaunchId } from "../../core/utils";
 import { useSdk } from "./use-sdk";
 
-type UseGetBatchAuctionLotQueryOptions = Parameters<
-  typeof useGetBatchAuctionLotQuery
->[2];
+type QueryData = GetBatchAuctionLotQuery["batchAuctionLot"];
+type QueryOptions = Omit<
+  UseQueryOptions<GetBatchAuctionLotQuery, Error, QueryData>,
+  "queryKey"
+>;
 
 type LaunchQueryConfig = {
   chainId: number;
   lotId: number;
-  options?: Partial<UseGetBatchAuctionLotQueryOptions>;
+  options?: Partial<QueryOptions>;
 };
 
-export const useLaunch = ({ chainId, lotId, options }: LaunchQueryConfig) => {
+export const useLaunchQuery = ({
+  chainId,
+  lotId,
+  options,
+}: LaunchQueryConfig): UseQueryResult<QueryData, Error> => {
   const sdk = useSdk();
   const id = getLaunchId(chainId, lotId);
   const isQueryEnabled =
@@ -27,11 +34,10 @@ export const useLaunch = ({ chainId, lotId, options }: LaunchQueryConfig) => {
   const subgraphUrl =
     sdk.config?.subgraph?.[chainId]?.url ?? deployments[chainId!].subgraphURL;
 
-  return useGetBatchAuctionLotQuery<GetBatchAuctionLotQuery["batchAuctionLot"]>(
+  return useGetBatchAuctionLotQuery(
     { endpoint: subgraphUrl },
     { id: id! },
     {
-      ...options,
       enabled: isQueryEnabled,
       select: (data) => data.batchAuctionLot,
     },

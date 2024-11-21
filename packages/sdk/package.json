@@ -7,6 +7,16 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    }
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
@@ -17,11 +27,6 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.0",
-    "@repo/abis": "workspace:*",
-    "@repo/cloak": "workspace:*",
-    "@repo/deployments": "workspace:*",
-    "@repo/env": "workspace:*",
-    "@repo/subgraph-client": "workspace:*",
     "abitype": "^1.0.2",
     "@trpc/client": "^10.45.1",
     "valibot": "^0.42.1"
@@ -34,6 +39,11 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/types": "workspace:*",
     "@repo/tsup-config": "workspace:*",
+    "@repo/abis": "workspace:*",
+    "@repo/cloak": "workspace:*",
+    "@repo/deployments": "workspace:*",
+    "@repo/env": "workspace:*",
+    "@repo/subgraph-client": "workspace:*",
     "@types/react": "^18.3.12",
     "@vitest/coverage-istanbul": "^1.5.0",
     "rollup": "^4.24.4",

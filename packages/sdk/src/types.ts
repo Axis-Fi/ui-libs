@@ -73,7 +73,10 @@ type OriginConfig = {
  * Type-safe tRPC client for the IPFS API.
  * The server isn't public so we need to define the same type here.
  */
-const t = initTRPC.create();
+const t = initTRPC.create({
+  isServer: false,
+  allowOutsideOfServer: true,
+});
 
 const router = t.router({
   storeAuctionInfo: t.procedure

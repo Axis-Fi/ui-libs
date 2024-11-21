@@ -13,6 +13,8 @@ export default function createConfig(overrides = {}) {
     },
     sourcemap: true,
     clean: true,
+    noExternal: [/@repo\/.*/],
+    platform: "browser",
     ...overrides,
   });
 }
