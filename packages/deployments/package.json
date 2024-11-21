@@ -1,6 +1,8 @@
 {
   "name": "@repo/deployments",
   "type": "module",
+  "private": true,
+  "version": "0.0.0",
   "main": "./src/index.ts",
   "dependencies": {
     "@repo/abis": "workspace:*"
@@ -10,9 +12,6 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/tsup-config": "workspace:*"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "scripts": {
     "sync": "node ./get-deployments.cjs",

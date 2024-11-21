@@ -1,13 +1,11 @@
 {
   "name": "@repo/types",
+  "private": "true",
   "type": "module",
   "main": "./src/index.ts",
   "dependencies": {
     "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/subgraph-client": "workspace:*"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
