@@ -1,6 +1,5 @@
 {
   "name": "@repo/eslint-config",
-  "version": "0.0.0",
   "main": "./react.js",
   "files": [
     "react.js"

@@ -1,7 +1,6 @@
 {
   "name": "@repo/abis",
   "type": "module",
-  "version": "0.0.0",
   "description": "",
   "main": "src/index.ts",
   "keywords": [],
