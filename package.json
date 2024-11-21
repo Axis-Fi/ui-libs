@@ -1,5 +1,5 @@
 {
-  "name": "@axis-finance/web3",
+  "name": "@axis-finance/ui-libs",
   "version": "0.0.0",
   "description": "Monorepo for Axis Finance frontend libraries",
   "scripts": {
@@ -10,7 +10,6 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css,html}\"",
     "prepare": "husky",
-    "storybook": "turbo run storybook",
     "test": "turbo run test",
     "test:unit": "turbo run test:unit"
   },
