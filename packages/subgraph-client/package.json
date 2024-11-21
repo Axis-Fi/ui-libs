@@ -1,5 +1,7 @@
 {
   "name": "@repo/subgraph-client",
+  "private": true,
+  "version": "0.0.0",
   "description": "",
   "main": "src/index.ts",
   "exports": {

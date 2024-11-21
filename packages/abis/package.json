@@ -1,5 +1,7 @@
 {
   "name": "@repo/abis",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "description": "",
   "main": "src/index.ts",

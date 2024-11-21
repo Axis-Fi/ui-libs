@@ -1,6 +1,8 @@
 {
   "name": "@repo/env",
   "type": "module",
+  "private": true,
+  "version": "0.0.0",
   "main": "src/index.ts",
   "dependencies": {
     "@repo/deployments": "workspace:*"
@@ -13,9 +15,6 @@
   },
   "peerDependencies": {
     "viem": "^2.2.0"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "scripts": {
     "build": "tsup"
