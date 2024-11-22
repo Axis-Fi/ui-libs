@@ -48,11 +48,11 @@ export function useAxisTransaction<
   const transaction = useWriteContract();
 
   const simulation = useSimulateContract({
-    abi: config.data!.abi,
-    address: config.data!.address,
+    abi: config?.data?.abi,
+    address: config?.data?.address,
     chainId: params.chainId,
-    functionName: config.data!.functionName,
-    args: config.data!.args,
+    functionName: config?.data?.functionName,
+    args: config?.data?.args,
     query: {
       enabled: config != null && config.data != null && parsedParams.success,
     },

@@ -4,10 +4,10 @@ Convenience library for interacting with the Axis protocol.
 
 ## Quickstart
 
-This library expects `react`, `viem` and `@tanstack/react-query` as peer dependencies.
+This library expects `react`, `wagmi`, `viem` and `@tanstack/react-query` as peer dependencies.
 
 ```bash
-pnpm add @axis-finance/sdk react viem @tanstack/react-query
+pnpm add @axis-finance/sdk react wagmi viem @tanstack/react-query wagmi
 ```
 
 ## Initialize the SDK
@@ -15,15 +15,30 @@ pnpm add @axis-finance/sdk react viem @tanstack/react-query
 ```ts sdk.ts
 import { createSdk } from "@axis-finance/sdk";
 
-export const sdk = createSdk();
+const sdk = createSdk();
 ```
 
-## Wrap your app with `<QueryClientProvider>` (if not already done)
+## Wrap your app with `<QueryClientProvider>` (if not already)
+
+<details>
+<summary>Note: TanStack Query bigint queryKeys</summary>
+
+TanStack Query doesn't know how to serialize `bigint` `queryKeys`. <br>
+Wagmi `hashFn` serializes `bigints` for us.
+
+</details>
 
 ```tsx app.tsx
+import { hashFn } from "wagmi/query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      queryKeyHashFn: hashFn,
+    },
+  },
+});
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -32,18 +47,68 @@ export const App = () => (
 );
 ```
 
-## Wrap your app with `<OriginSdkProvider>`
+## Wrap your app with `<WagmiProvider>`(if not already)
 
 ```tsx app.tsx
-import { sdk } from "./sdk";
-import { OriginSdkProvider } from "@axis-finance/sdk/react";
+import { createConfig, WagmiProvider, http } from "wagmi";
+import { mantle } from "wagmi/chains";
+import { hashFn } from "wagmi/query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const config = createConfig({
+  chains: [mantle],
+  transports: { [mantle.id]: http() },
+});
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      queryKeyHashFn: hashFn,
+    },
+  },
+});
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
-    <OriginSdkProvider sdk={sdk}>
+    <WagmiProvider config={config}>
       <>{/* ... */}</>
-    </OriginSdkProvider>
+    </WagmiProvider>
+  </QueryClientProvider>
+);
+```
+
+## Wrap your app with `<OriginSdkProvider>`
+
+```tsx app.tsx
+import { createSdk } from "@axis-finance/sdk";
+import { OriginSdkProvider } from "@axis-finance/sdk/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createConfig, WagmiProvider, http } from "wagmi";
+import { mantle } from "wagmi/chains";
+import { hashFn } from "wagmi/query";
+
+const sdk = createSdk();
+
+const config = createConfig({
+  chains: [mantle],
+  transports: { [mantle.id]: http() },
+});
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      queryKeyHashFn: hashFn,
+    },
+  },
+});
+
+export const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <WagmiProvider config={config}>
+      <OriginSdkProvider sdk={sdk}>
+        <>{/* ... */}</>
+      </OriginSdkProvider>
+    </WagmiProvider>
   </QueryClientProvider>
 );
 ```
@@ -62,7 +127,7 @@ export const Launch = () => {
     data: launch,
     status,
     error,
-  } = useLaunchQuery({ chainId: 1, lotId: 1 });
+  } = useLaunchQuery({ chainId: 5000, lotId: 1 });
 
   if (status === "pending") {
     return <div>Loading launch data...</div>;
@@ -94,7 +159,7 @@ export const Bid = () => {
   import { formatUnits } from "viem";
 
   const bidParams: BidParams = {
-    chainId: 1,
+    chainId: 5000,
     lotId: 1,
     amountIn: 10000000000000000000n,
     amountOut: 20000000000000000000n,
