@@ -1,4 +1,4 @@
-import { cloakServers } from "@repo/env";
+import { cloakServers } from "@axis-finance/env";
 import { ConfigsApi, Configuration, KeysApi } from ".";
 
 //TODO: add environment check

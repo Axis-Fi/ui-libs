@@ -1,6 +1,9 @@
-import type { AxisCallbackAddresses, AxisContractAddresses } from "@repo/types";
+import type {
+  AxisCallbackAddresses,
+  AxisContractAddresses,
+} from "@axis-finance/types";
 import { allDeployments } from "./main";
-import { abis } from "@repo/abis";
+import { abis } from "@axis-finance/abis";
 
 const addressesPerChain: Record<
   number,

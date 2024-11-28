@@ -1,7 +1,7 @@
 import { blastSepolia } from "viem/chains";
 import { describe, it, expect } from "vitest";
 import { getContractAddresses, getChainById } from "./utils";
-import type { AxisDeployments } from "@repo/deployments";
+import type { AxisDeployments } from "@axis-finance/deployments";
 
 const mockDeployments = {
   0: {

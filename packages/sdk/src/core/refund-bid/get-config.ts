@@ -1,6 +1,6 @@
 import * as v from "valibot";
-import { abis } from "@repo/abis";
-import { getAuctionHouse } from "@repo/deployments";
+import { abis } from "@axis-finance/abis";
+import { getAuctionHouse } from "@axis-finance/deployments";
 import { schema } from "./schema";
 import { SdkError } from "../../types";
 
@@ -17,8 +17,10 @@ const getConfig = (params: RefundBidParams): RefundBidConfig => {
   }
   const { lotId, bidId, bidIndex, chainId, auctionType } = params;
 
-  const auctionHouseAddress = getAuctionHouse({ chainId, auctionType })
-    ?.address;
+  const auctionHouseAddress = getAuctionHouse({
+    chainId,
+    auctionType,
+  })?.address;
 
   return {
     abi: abis.batchAuctionHouse,

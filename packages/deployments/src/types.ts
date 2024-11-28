@@ -5,7 +5,7 @@ import type {
   Chain,
   AxisCallbackAddresses,
   Address,
-} from "@repo/types";
+} from "@axis-finance/types";
 
 /** Describes an Axis Deployment per chain */
 export type AxisDeployment = {

@@ -1,5 +1,5 @@
 import { base } from "viem/chains";
-import type { AxisDeploymentConfig } from "../../src/types";
+import type { AxisDeploymentConfig } from "../../types";
 import core from "../../axis-core/.base.json";
 import periphery from "../../axis-periphery/.base.json";
 import { extractCallbacks, extractAddresses } from "../helpers";

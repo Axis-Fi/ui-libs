@@ -5,7 +5,7 @@ import {
   type Auction,
   type AxisContractNames,
   type AxisModuleContractNames,
-} from "@repo/types";
+} from "@axis-finance/types";
 import { testnetDeployments, mainnetDeployments, axisContracts } from ".";
 import mainnetTokenList from "./mainnet-tokenlist.json";
 

@@ -1,10 +1,13 @@
 import type { QueryKey, RefetchOptions } from "@tanstack/react-query";
 import { useQueries } from "@tanstack/react-query";
 import { Variables } from "graphql-request";
-import { mainnetDeployments, testnetDeployments } from "@repo/deployments";
-import { environment } from "@repo/env";
-import { GetAuctionLotsDocument, request } from "@repo/subgraph-client";
-import type { GetAuctionLots } from "@repo/types";
+import {
+  mainnetDeployments,
+  testnetDeployments,
+} from "@axis-finance/deployments";
+import { environment } from "@axis-finance/env";
+import { GetAuctionLotsDocument, request } from "@axis-finance/subgraph-client";
+import type { GetAuctionLots } from "@axis-finance/types";
 import { useSdk } from "./use-sdk";
 
 const defaultSubgraphUrls = (

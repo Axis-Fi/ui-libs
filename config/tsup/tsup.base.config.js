@@ -4,17 +4,15 @@ export default function createConfig(overrides = {}) {
   return defineConfig({
     entry: ["src/index.ts"],
     format: ["esm"],
-    dts: {
-      compilerOptions: {
-        declaration: true,
-        declarationMap: true,
-        module: "es2020",
-      },
-    },
     sourcemap: true,
     clean: true,
-    noExternal: [/@repo\/.*/],
     platform: "browser",
+    splitting: false,
+    dts: {
+      outDir: "dist",
+      ...overrides.dts,
+    },
+    outDir: "dist",
     ...overrides,
   });
 }

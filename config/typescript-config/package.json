@@ -1,7 +1,9 @@
 {
-  "name": "@repo/typescript-config",
-  "private": true,
+  "name": "@axis-finance/typescript-config",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "files": [
     "base.json",

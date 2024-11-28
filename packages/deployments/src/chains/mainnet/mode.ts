@@ -1,5 +1,5 @@
 import { mode } from "viem/chains";
-import type { AxisDeploymentConfig } from "../../src/types";
+import type { AxisDeploymentConfig } from "../../types";
 import { usdc, usdt, weth } from "../../tokens/common";
 import { extractAddresses, extractCallbacks } from "../helpers";
 import core from "../../axis-core/.mode.json";

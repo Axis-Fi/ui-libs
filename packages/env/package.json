@@ -1,17 +1,30 @@
 {
-  "name": "@repo/env",
+  "name": "@axis-finance/env",
   "type": "module",
-  "private": true,
   "version": "0.0.0",
-  "main": "src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "dependencies": {
-    "@repo/deployments": "workspace:*"
+    "@axis-finance/deployments": "workspace:*"
   },
   "devDependencies": {
-    "@repo/types": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tsup-config": "workspace:*"
+    "@axis-finance/types": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
+    "@axis-finance/eslint-config": "workspace:*",
+    "@axis-finance/tsup-config": "workspace:*",
+    "typescript": "^5.3.0"
   },
   "peerDependencies": {
     "viem": "^2.2.0"

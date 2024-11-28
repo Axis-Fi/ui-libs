@@ -1,4 +1,4 @@
-import { AuctionType } from "@repo/types";
+import { AuctionType } from "@axis-finance/types";
 import type { CreateParams } from "../../core/create";
 import { getAuctionModuleParams as getFixedPriceAuctionModuleParams } from "./fixed-price/module";
 import { getAuctionModuleParams as getSealedBidAuctionModuleParams } from "./sealed-bid/module";

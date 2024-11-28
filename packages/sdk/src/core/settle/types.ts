@@ -1,5 +1,5 @@
 import * as v from "valibot";
-import { abis } from "@repo/abis";
+import { abis } from "@axis-finance/abis";
 import { schema } from ".";
 import type { ContractConfig } from "../../types";
 

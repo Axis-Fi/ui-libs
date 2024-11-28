@@ -1,4 +1,4 @@
-import type { Address } from "@repo/types";
+import type { Address } from "@axis-finance/types";
 import coreSample from "../axis-core/.arbitrum-one.json";
 import peripherySample from "../axis-periphery/.blast.json";
 

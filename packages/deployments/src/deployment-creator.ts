@@ -1,7 +1,7 @@
-import type { Token, Chain } from "@repo/types";
+import type { Token, Chain } from "@axis-finance/types";
 import type { AxisDeployment, AxisDeploymentConfig } from "./types";
-import subgraphConfig from "../subgraph-config";
-import tokenlistMetadata from "../tokenlist-metadata";
+import subgraphConfig from "./subgraph-config";
+import tokenlistMetadata from "./tokenlist-metadata";
 
 /** Creates a deployment configuration */
 export function createDeployment(config: AxisDeploymentConfig): AxisDeployment {

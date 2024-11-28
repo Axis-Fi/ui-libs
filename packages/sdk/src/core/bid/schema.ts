@@ -1,5 +1,5 @@
 import * as v from "valibot";
-import { AuctionType } from "@repo/types";
+import { AuctionType } from "@axis-finance/types";
 import { AddressSchema, BytesSchema } from "../schema";
 
 export const schema = v.object({

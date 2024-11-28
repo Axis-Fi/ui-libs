@@ -1,3 +1,4 @@
+import type { Abi } from "abitype";
 import batchCatalogue from "./BatchCatalogue.json";
 import _batchAuctionHouse from "./BatchAuctionHouse.json";
 import encryptedMarginalPrice from "./EncryptedMarginalPrice.json";
@@ -20,6 +21,30 @@ import baselineCappedAllowlist from "./BaselineCappedAllowlist.json";
 import baselineTokenAllowlist from "./BaselineTokenAllowlist.json";
 import bpool from "./BPOOL.json";
 
+type ContractAbi = { abi: Abi };
+type ContractAbis = {
+  batchCatalogue: ContractAbi;
+  batchAuctionHouse: ContractAbi;
+  encryptedMarginalPrice: ContractAbi;
+  fixedPriceBatch: ContractAbi;
+  linearVesting: ContractAbi;
+  merkleAllowlist: ContractAbi;
+  cappedMerkleAllowlist: ContractAbi;
+  tokenAllowlist: ContractAbi;
+  allocatedMerkleAllowlist: ContractAbi;
+  uniV2Dtl: ContractAbi;
+  uniV3Dtl: ContractAbi;
+  uniV2Factory: ContractAbi;
+  uniV3Factory: ContractAbi;
+  uniV3Pool: ContractAbi;
+  baseline: ContractAbi;
+  baselineAllowlist: ContractAbi;
+  baselineAllocatedAllowlist: ContractAbi;
+  baselineCappedAllowlist: ContractAbi;
+  baselineTokenAllowlist: ContractAbi;
+  bpool: ContractAbi;
+};
+
 //Fetch errors from modules to include in the AuctionHouse ABI
 const errors = [
   encryptedMarginalPrice.abi,
@@ -34,7 +59,7 @@ const batchAuctionHouse = {
 
 export { testnetERC20 };
 
-export default {
+const abis = {
   batchCatalogue,
   batchAuctionHouse,
   encryptedMarginalPrice,
@@ -55,4 +80,6 @@ export default {
   baselineCappedAllowlist,
   baselineTokenAllowlist,
   bpool,
-} as const;
+} as ContractAbis;
+
+export default abis;

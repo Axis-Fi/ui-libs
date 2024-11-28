@@ -1,7 +1,7 @@
-import type { TokenList } from "@repo/types";
+import type { TokenList } from "@axis-finance/types";
 import { createDeployment, createDeploymentRecord } from "./deployment-creator";
-import testnetConfigs from "../chains/testnet";
-import mainnetConfigs from "../chains/mainnet";
+import testnetConfigs from "./chains/testnet";
+import mainnetConfigs from "./chains/mainnet";
 
 //Transforms config files into deployment objects
 export const mainnetDeployments = mainnetConfigs.map(createDeployment);

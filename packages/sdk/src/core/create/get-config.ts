@@ -1,7 +1,7 @@
 import { parseUnits } from "viem";
 import * as v from "valibot";
-import { getAuctionHouse } from "@repo/deployments";
-import { abis } from "@repo/abis";
+import { getAuctionHouse } from "@axis-finance/deployments";
+import { abis } from "@axis-finance/abis";
 import { schema } from "./schema";
 import { type MetadataClient, SdkError } from "../../types";
 import type { CreateConfig, CreateParams } from "./types";

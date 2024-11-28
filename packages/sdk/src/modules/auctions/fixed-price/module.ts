@@ -1,5 +1,5 @@
 import { encodeAbiParameters } from "viem";
-import { AuctionType } from "@repo/types";
+import { AuctionType } from "@axis-finance/types";
 import type { CreateParams } from "../../../core/create";
 import { SdkError } from "../../../types";
 import { toBasisPoints } from "../utils";

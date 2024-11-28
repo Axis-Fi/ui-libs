@@ -6,7 +6,7 @@ import {
   type UseSimulateContractReturnType,
 } from "wagmi";
 import { useQuery } from "@tanstack/react-query";
-import { type BatchAuctionHouseAbi } from "@repo/abis";
+import { type BatchAuctionHouseAbi } from "@axis-finance/abis";
 import type { AxisFunctionName, AxisTransaction } from "./types";
 import { ContractConfig } from "../../types";
 

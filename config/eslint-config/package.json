@@ -1,17 +1,24 @@
 {
-  "name": "@repo/eslint-config",
-  "private": true,
+  "name": "@axis-finance/eslint-config",
   "version": "0.0.0",
-  "main": "./react.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./.eslintrc.json",
+    "./react": "./react.json"
+  },
   "files": [
-    "react.js"
+    ".eslintrc.json",
+    "react.json"
   ],
   "devDependencies": {
-    "eslint-plugin-react-refresh": "^0.4.5",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-storybook": "^0.6.15"
   }
 }

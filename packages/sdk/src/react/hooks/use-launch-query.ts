@@ -2,8 +2,8 @@ import type { UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
 import {
   type GetBatchAuctionLotQuery,
   useGetBatchAuctionLotQuery,
-} from "@repo/subgraph-client";
-import { deployments } from "@repo/deployments";
+} from "@axis-finance/subgraph-client";
+import { deployments } from "@axis-finance/deployments";
 import { getLaunchId } from "../../core/utils";
 import { useSdk } from "./use-sdk";
 

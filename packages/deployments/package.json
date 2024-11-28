@@ -1,17 +1,29 @@
 {
-  "name": "@repo/deployments",
+  "name": "@axis-finance/deployments",
   "type": "module",
-  "private": true,
   "version": "0.0.0",
-  "main": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "dependencies": {
-    "@repo/abis": "workspace:*"
+    "@axis-finance/abis": "workspace:*"
   },
   "devDependencies": {
-    "@repo/types": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tsup-config": "workspace:*"
+    "@axis-finance/types": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
+    "@axis-finance/eslint-config": "workspace:*",
+    "@axis-finance/tsup-config": "workspace:*"
   },
   "scripts": {
     "sync": "node ./get-deployments.cjs",

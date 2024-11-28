@@ -1,5 +1,8 @@
-import { isTestnet, getMainnetTokenFromSymbol } from "@repo/deployments";
-import type { Address, Token } from "@repo/types";
+import {
+  isTestnet,
+  getMainnetTokenFromSymbol,
+} from "@axis-finance/deployments";
+import type { Address, Token } from "@axis-finance/types";
 import { fetchTokenPrices } from "../utils";
 
 const usdTokens = [

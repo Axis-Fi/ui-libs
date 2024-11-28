@@ -1,3 +1,3 @@
-import createConfig from "@repo/tsup-config";
+import createConfig from "@axis-finance/tsup-config";
 
 export default createConfig();

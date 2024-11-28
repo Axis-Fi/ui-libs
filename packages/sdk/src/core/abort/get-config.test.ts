@@ -1,13 +1,13 @@
 import { describe, it, expect, vi } from "vitest";
 import { zeroAddress } from "viem";
-import { abis } from "@repo/abis";
-import { AuctionType } from "@repo/types";
+import { abis } from "@axis-finance/abis";
+import { AuctionType } from "@axis-finance/types";
 import { getConfig } from "./get-config";
 import type { AbortParams } from "./types";
 
 const mockAddress = zeroAddress;
 
-vi.mock("@repo/deployments", () => ({
+vi.mock("@axis-finance/deployments", () => ({
   getAuctionHouse: vi.fn(() => getAuctionHouseMock),
 }));
 

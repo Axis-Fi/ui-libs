@@ -1,12 +1,28 @@
 {
-  "name": "@repo/types",
-  "private": true,
+  "name": "@axis-finance/types",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
-  "main": "./src/index.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/subgraph-client": "workspace:*"
+    "@axis-finance/tsup-config": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
+    "@axis-finance/eslint-config": "workspace:*",
+    "@axis-finance/subgraph-client": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsup"
   }
 }

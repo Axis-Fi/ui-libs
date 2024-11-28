@@ -2,10 +2,10 @@ import {
   type CloakClient,
   createCloakClient,
   Configuration,
-} from "@repo/cloak";
+} from "@axis-finance/cloak";
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
-import { type AxisDeployments, deployments } from "@repo/deployments";
-import { getCloakServer, getMetadataServer } from "@repo/env";
+import { type AxisDeployments, deployments } from "@axis-finance/deployments";
+import { getCloakServer, getMetadataServer } from "@axis-finance/env";
 import * as core from "../core";
 import type { MetadataClient, MetadataRouter, OriginConfig } from "../types";
 import type {
