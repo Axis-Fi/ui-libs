@@ -1,8 +1,11 @@
 import { type Hex, fromHex, toHex, encodeAbiParameters } from "viem";
-import type { EncryptLotIdPost200Response, CloakClient } from "@repo/cloak";
+import type {
+  EncryptLotIdPost200Response,
+  CloakClient,
+} from "@axis-finance/cloak";
 import { abi, type EncryptBidParams } from ".";
 import { SdkError } from "../../types";
-import { getAuctionHouse } from "@repo/deployments";
+import { getAuctionHouse } from "@axis-finance/deployments";
 
 const getEncryptedBid = async (
   params: EncryptBidParams,
@@ -14,8 +17,10 @@ const getEncryptedBid = async (
     const { lotId, amountIn, amountOut, chainId, bidderAddress, auctionType } =
       params;
 
-    const auctionHouseAddress = getAuctionHouse({ chainId, auctionType })
-      ?.address;
+    const auctionHouseAddress = getAuctionHouse({
+      chainId,
+      auctionType,
+    })?.address;
 
     result = await cloakClient.keysApi.encryptLotIdPost({
       xChainId: chainId,

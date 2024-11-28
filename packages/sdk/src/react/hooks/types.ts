@@ -4,7 +4,7 @@ import {
   type UseSimulateContractReturnType,
 } from "wagmi";
 import type { ContractFunctionName } from "viem";
-import type { BatchAuctionHouseAbi } from "@repo/abis";
+import type { BatchAuctionHouseAbi } from "@axis-finance/abis";
 
 type AxisFunctionName = ContractFunctionName<
   BatchAuctionHouseAbi,

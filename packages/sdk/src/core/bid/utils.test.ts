@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { parseUnits, type Address } from "viem";
-import { AuctionType } from "@repo/types";
-import type { CloakClient } from "@repo/cloak";
+import { AuctionType } from "@axis-finance/types";
+import type { CloakClient } from "@axis-finance/cloak";
 import * as utils from "./utils";
 import type { EncryptBidParams } from "./types";
 

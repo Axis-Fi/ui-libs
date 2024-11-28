@@ -1,16 +1,29 @@
 {
-  "name": "@repo/abis",
-  "private": true,
+  "name": "@axis-finance/abis",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "description": "",
-  "main": "src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@repo/tsup-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
+    "@axis-finance/tsup-config": "workspace:*",
+    "@axis-finance/eslint-config": "workspace:*",
     "@wagmi/cli": "^2.1.0"
   },
   "scripts": {

@@ -1,0 +1,4 @@
+{
+  "extends": "@axis-finance/typescript-config/base.json",
+  "include": ["src"]
+}

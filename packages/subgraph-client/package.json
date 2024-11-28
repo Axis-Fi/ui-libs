@@ -1,28 +1,48 @@
 {
-  "name": "@repo/subgraph-client",
-  "private": true,
+  "name": "@axis-finance/subgraph-client",
+  "type": "module",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "",
-  "main": "src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
-    ".": "./src/index.ts",
-    "./request": "./src/request.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./request": {
+      "types": "./dist/request.d.ts",
+      "import": "./dist/request.js"
+    }
   },
   "scripts": {
-    "build": "graphql-codegen"
+    "build:generate": "graphql-codegen",
+    "build": "pnpm build:generate && tsup"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@axis-finance/eslint-config": "workspace:*",
+    "@axis-finance/tsup-config": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
     "@graphql-codegen/cli": "^5.0.2",
+    "change-case-all": "^2.1.0",
     "@graphql-codegen/typescript-react-query": "^6.1.0",
     "@parcel/watcher": "^2.4.0",
     "ts-node": "^10.9.0",
+    "tsup": "^8.1.0",
     "typescript": "^5.3.0"
   },
   "dependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",
+    "graphql-request": "^6.1.0",
     "graphql": "16.8.1"
   }
 }

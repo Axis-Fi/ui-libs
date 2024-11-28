@@ -1,17 +1,29 @@
 {
-  "name": "@repo/cloak",
-  "private": true,
+  "name": "@axis-finance/cloak",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
-  "main": "./src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "dependencies": {
-    "@repo/env": "workspace:*"
+    "@axis-finance/env": "workspace:*"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.9.0",
-    "@repo/tsup-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*"
+    "@axis-finance/tsup-config": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
+    "@axis-finance/eslint-config": "workspace:*"
   },
   "scripts": {
     "generate:openapi": "pnpm dlx @openapitools/openapi-generator-cli generate -i ./src/cloak-openapi.json -g typescript-fetch -o ./src/generated/",

@@ -1,4 +1,4 @@
-import { GetAuctionLotsQuery } from "@repo/subgraph-client";
+import { GetAuctionLotsQuery } from "@axis-finance/subgraph-client";
 import { AuctionType } from "./auction-modules";
 import { Address } from "./axis-contracts";
 import { BatchSubgraphAuction } from "./subgraph-queries";

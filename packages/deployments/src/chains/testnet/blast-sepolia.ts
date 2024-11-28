@@ -1,5 +1,5 @@
 import { blastSepolia } from "viem/chains";
-import type { AxisDeploymentConfig } from "../../src/types";
+import type { AxisDeploymentConfig } from "../../types";
 import { weth } from "../../tokens/common";
 import core from "../../axis-core/.blast-sepolia.json";
 import periphery from "../../axis-periphery/.blast-sepolia.json";

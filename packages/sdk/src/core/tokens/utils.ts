@@ -1,5 +1,5 @@
 import * as chains from "viem/chains";
-import type { Token } from "@repo/types";
+import type { Token } from "@axis-finance/types";
 
 type PartialTokenResponse = { coins: { [key: string]: { price: number } } };
 

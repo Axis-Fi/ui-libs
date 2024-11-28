@@ -1,7 +1,10 @@
 import { http } from "viem";
-import { testnetDeployments, mainnetDeployments } from "@repo/deployments";
-import type { Chain } from "@repo/types";
-import type { AxisDeployment } from "@repo/deployments/src/types";
+import {
+  testnetDeployments,
+  mainnetDeployments,
+} from "@axis-finance/deployments";
+import type { Chain } from "@axis-finance/types";
+import type { AxisDeployment } from "@axis-finance/deployments";
 
 //Mainnet Config
 export const mainnets: Chain[] = mainnetDeployments.map(({ chain }) => chain);

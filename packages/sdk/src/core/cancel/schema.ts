@@ -1,6 +1,6 @@
 import * as v from "valibot";
 import { BytesSchema } from "../schema";
-import { AuctionType } from "@repo/types";
+import { AuctionType } from "@axis-finance/types";
 
 const schema = v.object({
   chainId: v.number(),

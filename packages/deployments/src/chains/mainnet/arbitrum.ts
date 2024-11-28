@@ -1,9 +1,9 @@
 import { arbitrum } from "viem/chains";
-import type { AxisDeploymentConfig } from "../../src/types";
-import core from "../../axis-core/.arbitrum-one.json";
-import periphery from "../../axis-periphery/.arbitrum-one.json";
-import { extractAddresses, extractCallbacks } from "../helpers";
 import { dai, usdc, usdt, weth } from "../../tokens/common";
+import { AxisDeploymentConfig } from "../../types";
+import core from "../../axis-core/.base.json";
+import periphery from "../../axis-periphery/.base.json";
+import { extractAddresses, extractCallbacks } from "../helpers";
 
 const config: AxisDeploymentConfig = {
   name: "arbitrum",

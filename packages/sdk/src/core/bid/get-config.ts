@@ -1,8 +1,8 @@
 import * as v from "valibot";
-import { AuctionType } from "@repo/types";
-import type { CloakClient } from "@repo/cloak";
-import { abis } from "@repo/abis";
-import { getAuctionHouse } from "@repo/deployments";
+import { AuctionType } from "@axis-finance/types";
+import type { CloakClient } from "@axis-finance/cloak";
+import { abis } from "@axis-finance/abis";
+import { getAuctionHouse } from "@axis-finance/deployments";
 import { SdkError } from "../../types";
 import { schema } from "./schema";
 import type { BidConfig, BidParams, EncryptBidParams } from "./types";
@@ -34,8 +34,10 @@ const getConfig = async (
     callbackData,
   } = params;
 
-  const auctionHouseAddress = getAuctionHouse({ chainId, auctionType })
-    ?.address;
+  const auctionHouseAddress = getAuctionHouse({
+    chainId,
+    auctionType,
+  })?.address;
 
   if (auctionHouseAddress === undefined || auctionHouseAddress === "0x") {
     throw new SdkError(

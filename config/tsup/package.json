@@ -1,10 +1,16 @@
 {
-  "name": "@repo/tsup-config",
-  "private": true,
+  "name": "@axis-finance/tsup-config",
   "version": "0.0.0",
-  "main": "tsup.base.config.js",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "tsup.base.config.js",
+  "types": "tsup.base.config.d.ts",
   "dependencies": {
     "tsup": "^8.1.0"
+  },
+  "devDependencies": {
+    "@axis-finance/eslint-config": "workspace:*"
   }
 }

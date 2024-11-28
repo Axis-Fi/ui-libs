@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import { parseUnits, zeroAddress } from "viem";
-import { abis } from "@repo/abis";
-import { Address, AuctionType } from "@repo/types";
-import * as deployments from "@repo/deployments";
-import type { CloakClient } from "@repo/cloak";
+import { abis } from "@axis-finance/abis";
+import { Address, AuctionType } from "@axis-finance/types";
+import * as deployments from "@axis-finance/deployments";
+import type { CloakClient } from "@axis-finance/cloak";
 import { getConfig } from "./get-config";
 import { getEncryptedBid, encodeEncryptedBid } from "./utils";
 import type { BidParams } from "./types";
@@ -19,7 +19,7 @@ vi.mock("./utils", () => ({
   encodeEncryptedBid: vi.fn(() => mockEncodedEncryptedBid),
 }));
 
-vi.mock("@repo/deployments", () => ({
+vi.mock("@axis-finance/deployments", () => ({
   getAuctionHouse: vi.fn(() => getAuctionHouseMock),
 }));
 

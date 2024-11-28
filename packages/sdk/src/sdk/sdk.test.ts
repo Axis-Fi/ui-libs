@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { parseUnits } from "viem";
-import { CloakClient } from "@repo/cloak";
-import * as cloakDep from "@repo/cloak";
-import { AuctionType } from "@repo/types";
+import { CloakClient } from "@axis-finance/cloak";
+import * as cloakDep from "@axis-finance/cloak";
+import { AuctionType } from "@axis-finance/types";
 import { OriginSdk } from "./sdk";
 import type { Core, BidParams } from "../core";
 

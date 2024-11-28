@@ -1,6 +1,10 @@
 import { type Chain } from "viem";
-import { type AxisDeployments, deployments } from "@repo/deployments";
-import type { Address, AuctionId, AxisContractAddresses } from "@repo/types";
+import { type AxisDeployments, deployments } from "@axis-finance/deployments";
+import type {
+  Address,
+  AuctionId,
+  AxisContractAddresses,
+} from "@axis-finance/types";
 
 const getContractAddresses = (
   chainId: number,
