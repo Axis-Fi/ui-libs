@@ -22,6 +22,9 @@
     "@axis-finance/eslint-config": "workspace:*",
     "@axis-finance/subgraph-client": "workspace:*"
   },
+  "devDependencies": {
+    "@rainbow-me/rainbowkit": "2.0.2"
+  },
   "scripts": {
     "build": "tsup"
   }

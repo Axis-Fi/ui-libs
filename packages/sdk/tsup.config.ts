@@ -11,6 +11,7 @@ export default createTsupConfig({
     "@tanstack/react-query",
     "react",
     "viem",
+    "wagmi",
     "use-sync-external-store",
   ],
 });
