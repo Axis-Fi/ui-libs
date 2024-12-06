@@ -1,5 +1,13 @@
 # @axis-finance/types
 
+## 0.0.2
+
+### Patch Changes
+
+- 994eeb3: Chore reorg dependencies/peer deps
+- Updated dependencies [994eeb3]
+  - @axis-finance/subgraph-client@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
