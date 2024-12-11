@@ -9,7 +9,10 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": [
+        "./dist/index.d.ts",
+        "./dist/angry-purple-tiger.d.ts"
+      ],
       "import": "./dist/index.js"
     }
   },
@@ -26,6 +29,6 @@
     "@rainbow-me/rainbowkit": "2.0.2"
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup && cp -r ./declarations/** ./dist"
   }
 }

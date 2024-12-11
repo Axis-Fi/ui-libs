@@ -7,3 +7,5 @@ export * from "./curator";
 export * from "./axis-contracts";
 export * from "./token";
 export * from "./subgraph-queries";
+
+/// <reference path="../declarations/angry-purple-tiger.d.ts" />

@@ -1,4 +1,4 @@
 {
   "extends": "@axis-finance/typescript-config/base.json",
-  "include": ["src", "../env/vite-env.d.ts"]
+  "include": ["src", "../env/vite-env.d.ts", "declarations/*.d.ts"]
 }
