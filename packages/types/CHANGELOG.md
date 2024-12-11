@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.4
+
+### Patch Changes
+
+- ede54dd: Export custom declarations from types package
+
 ## 0.0.3
 
 ### Patch Changes
