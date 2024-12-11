@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.3
+
+### Patch Changes
+
+- f3c6734: Sync fireworks changes
+
 ## 0.0.2
 
 ### Patch Changes
