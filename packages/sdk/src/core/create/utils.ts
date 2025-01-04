@@ -15,5 +15,5 @@ export const storeMetadata = async (
 ): Promise<string> => {
   const response = await metadataClient.storeAuctionInfo.mutate(metadata);
 
-  return response.hash.hashV0;
+  return response;
 };

@@ -52,7 +52,7 @@
   "peerDependencies": {
     "@tanstack/react-query": "^5.18.1",
     "react": "^18.3.1",
-    "viem": "^2.8.16",
+    "viem": "^2.17.3",
     "wagmi": "^2.5.2"
   },
   "repository": {

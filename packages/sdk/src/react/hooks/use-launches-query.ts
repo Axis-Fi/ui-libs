@@ -1,18 +1,19 @@
 import type { QueryKey, RefetchOptions } from "@tanstack/react-query";
 import { useQueries } from "@tanstack/react-query";
-import { Variables } from "graphql-request";
+import type { Variables } from "graphql-request";
 import {
   mainnetDeployments,
   testnetDeployments,
 } from "@axis-finance/deployments";
-import { environment } from "@axis-finance/env";
 import { GetAuctionLotsDocument, request } from "@axis-finance/subgraph-client";
 import type { GetAuctionLots } from "@axis-finance/types";
 import { useSdk } from "./use-sdk";
 
-const defaultSubgraphUrls = (
-  environment.isTestnet ? testnetDeployments : mainnetDeployments
-).map((d) => [d.chain.id, d.subgraphURL]) satisfies [number, string][];
+const defaultSubgraphUrls = (isTestnet?: boolean) =>
+  (isTestnet ? testnetDeployments : mainnetDeployments).map((d) => [
+    d.chain.id,
+    d.subgraphURL,
+  ]) satisfies [number, string][];
 
 type LaunchesQueryConfig<T> = {
   chainIds?: number[];
@@ -20,6 +21,7 @@ type LaunchesQueryConfig<T> = {
   variables?: Variables;
   fields: (keyof T)[];
   queryKeyFn?: (chainId: number) => QueryKey;
+  isTestnet?: boolean;
 };
 
 const defaultQueryConfig: LaunchesQueryConfig<GetAuctionLots> = {
@@ -32,25 +34,28 @@ const defaultQueryConfig: LaunchesQueryConfig<GetAuctionLots> = {
 export const useLaunchesQuery = <T>(
   queryConfig?: Partial<LaunchesQueryConfig<T>>,
 ) => {
-  const { chainIds, document, fields, variables, queryKeyFn } = {
+  const { chainIds, document, fields, variables, queryKeyFn, isTestnet } = {
     ...defaultQueryConfig,
     ...queryConfig,
   };
 
   const sdk = useSdk();
 
-  const subgraphUrls = defaultSubgraphUrls
-    .map(([chainId, subgraphUrl]) => {
+  const subgraphUrls = defaultSubgraphUrls(isTestnet)
+    // Ignore chains which the consumer isn't interested in
+    .filter(
+      ([chainId]: [number, string]) =>
+        chainIds == null || chainIds?.includes(chainId),
+    )
+    .map(([chainId, subgraphUrl]: [number, string]) => {
       return [
         chainId,
         sdk.config.subgraph?.[chainId]?.url || subgraphUrl,
       ] satisfies [number, string];
-    })
-    // Ignore chains which the consumer isn't interested in
-    .filter(([chainId]) => chainIds == null || chainIds?.includes(chainId));
+    });
 
   return useQueries({
-    queries: subgraphUrls.map(([chainId, subgraphUrl]) => ({
+    queries: subgraphUrls.map(([chainId, subgraphUrl]: [number, string]) => ({
       queryKey: queryKeyFn?.(chainId) ?? [subgraphUrl],
       queryFn: () =>
         request<T>(subgraphUrl, document, {

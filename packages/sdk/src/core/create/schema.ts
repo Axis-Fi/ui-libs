@@ -12,6 +12,7 @@ const AuctionMetadataSchema = v.object({
   name: v.string(),
   description: v.string(),
   tagline: v.string(),
+  allowlist: v.optional(v.array(v.array(v.string()))),
   links: v.object({
     projectLogo: v.pipe(v.string(), v.url()),
     payoutTokenLogo: v.pipe(v.string(), v.url()),

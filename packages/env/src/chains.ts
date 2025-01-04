@@ -1,5 +1,4 @@
 import { http } from "wagmi";
-import { environment } from "./environment";
 import type { Chain } from "@axis-finance/types";
 import {
   testnetDeployments,
@@ -15,13 +14,13 @@ const mainnetConfig = generateConfig(mainnetDeployments);
 export const testnets: Chain[] = testnetDeployments.map(({ chain }) => chain);
 const testnetConfig = generateConfig(testnetDeployments);
 
-export const activeChains = (environment.isTestnet ? testnets : mainnets).sort(
-  (a, b) => a.name.localeCompare(b.name),
-);
+export const activeChains = (isTestnet: boolean) =>
+  (isTestnet ? testnets : mainnets).sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
 
-export const activeConfig = environment.isTestnet
-  ? testnetConfig
-  : mainnetConfig;
+export const activeConfig = (isTestnet: boolean) =>
+  isTestnet ? testnetConfig : mainnetConfig;
 
 function generateConfig(deployment: AxisDeployment[]) {
   return deployment.reduce(

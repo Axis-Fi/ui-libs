@@ -1,5 +1,5 @@
 import type { Chain as RainbowkitChain } from "@rainbow-me/rainbowkit";
-import { Address } from "./axis-contracts";
+import type { Address } from "./axis-contracts";
 
 type NativeCurrency = {
   name: string;

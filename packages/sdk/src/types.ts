@@ -9,6 +9,7 @@ import type {
 } from "abitype";
 import { AuctionMetadataSchema } from "./core/create/schema";
 import { CreateTRPCProxyClient } from "@trpc/client";
+import { Environment } from "@axis-finance/env";
 
 class SdkError<TInput> extends Error {
   issues?: v.BaseIssue<TInput>[] | undefined;
@@ -31,19 +32,17 @@ type ContractFunctionParams<
   "inputs"
 >;
 
-type ContractFunctionReturn<
-  TAbi extends Abi,
-  TFunctionName extends string,
-> = AbiParametersToPrimitiveTypes<
-  ExtractAbiFunction<TAbi, TFunctionName>["outputs"],
-  "outputs"
-> extends infer OutputArray
-  ? OutputArray extends readonly [] // If the function has no return value, return undefined
-    ? undefined
-    : OutputArray extends readonly [infer SingleOutput] // If the function has a single return value, unwrap it
-      ? SingleOutput
-      : OutputArray // Otherwise, return the array of return values
-  : void;
+type ContractFunctionReturn<TAbi extends Abi, TFunctionName extends string> =
+  AbiParametersToPrimitiveTypes<
+    ExtractAbiFunction<TAbi, TFunctionName>["outputs"],
+    "outputs"
+  > extends infer OutputArray
+    ? OutputArray extends readonly [] // If the function has no return value, return undefined
+      ? undefined
+      : OutputArray extends readonly [infer SingleOutput] // If the function has a single return value, unwrap it
+        ? SingleOutput
+        : OutputArray // Otherwise, return the array of return values
+    : void;
 
 type ContractConfig<
   TAbi extends Abi,
@@ -56,6 +55,7 @@ type ContractConfig<
 };
 
 type OriginConfig = {
+  environment: Environment;
   cloak: {
     url: string;
   };
@@ -81,16 +81,8 @@ const t = initTRPC.create({
 const router = t.router({
   storeAuctionInfo: t.procedure
     .input(v.parser(AuctionMetadataSchema))
-    .output(
-      v.parser(
-        v.object({
-          hash: v.object({
-            hashV0: v.string(),
-          }),
-        }),
-      ),
-    )
-    .mutation(() => ({ hash: { hashV0: "" } })),
+    .output(v.parser(v.string()))
+    .mutation(() => ""),
 });
 
 type MetadataRouter = typeof router;

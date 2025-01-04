@@ -1,9 +1,9 @@
-import { cloakServers, environment, ipfsServers } from ".";
+import { cloakServers, Environment, ipfsServers } from ".";
 
-const getCloakServer = () =>
-  cloakServers[environment.current] ?? cloakServers.testing;
+const getCloakServer = (env?: Environment) =>
+  cloakServers[env ?? Environment.PRODUCTION];
 
-const getMetadataServer = () =>
-  ipfsServers[environment.current] ?? ipfsServers.testing;
+const getMetadataServer = (env?: Environment) =>
+  ipfsServers[env ?? Environment.PRODUCTION];
 
 export { getCloakServer, getMetadataServer };
