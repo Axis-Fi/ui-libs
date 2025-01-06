@@ -5,7 +5,11 @@ import {
 } from "@axis-finance/cloak";
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 import { type AxisDeployments, deployments } from "@axis-finance/deployments";
-import { getCloakServer, getMetadataServer } from "@axis-finance/env";
+import {
+  Environment,
+  getCloakServer,
+  getMetadataServer,
+} from "@axis-finance/env";
 import * as core from "../core";
 import type { MetadataClient, MetadataRouter, OriginConfig } from "../types";
 import type {
@@ -28,11 +32,12 @@ import type {
 } from "../core";
 
 const defaultConfig: OriginConfig = {
+  environment: Environment.PRODUCTION,
   cloak: {
-    url: getCloakServer().url,
+    url: getCloakServer(Environment.PRODUCTION).url,
   },
   metadata: {
-    url: getMetadataServer().url,
+    url: getMetadataServer(Environment.PRODUCTION).url,
   },
 };
 

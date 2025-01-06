@@ -1,11 +1,10 @@
-import { cloakServers } from "@axis-finance/env";
+import { cloakServers, Environment } from "@axis-finance/env";
 import { ConfigsApi, Configuration, KeysApi } from ".";
 
-//TODO: add environment check
-const { url: serverUrl } = cloakServers.production;
+const cloakApiUrl = cloakServers[Environment.PRODUCTION].url;
 
 const defaultConfig = new Configuration({
-  basePath: serverUrl,
+  basePath: cloakApiUrl,
 });
 
 export class CloakClient {
