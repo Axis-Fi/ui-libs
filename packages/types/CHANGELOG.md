@@ -1,5 +1,16 @@
 # @axis-finance/types
 
+## 0.0.5
+
+### Patch Changes
+
+- 7a59224: Handle different deployment environments
+- Updated dependencies [7a59224]
+  - @axis-finance/eslint-config@0.0.2
+  - @axis-finance/tsup-config@0.0.2
+  - @axis-finance/typescript-config@0.0.2
+  - @axis-finance/subgraph-client@0.0.3
+
 ## 0.0.4
 
 ### Patch Changes
