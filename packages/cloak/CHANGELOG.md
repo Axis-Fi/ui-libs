@@ -1,5 +1,13 @@
 # @axis-finance/cloak
 
+## 0.0.3
+
+### Patch Changes
+
+- 7a59224: Handle different deployment environments
+- Updated dependencies [7a59224]
+  - @axis-finance/env@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
