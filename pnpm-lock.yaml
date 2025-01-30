@@ -4059,7 +4059,7 @@ packages:
       react-dom: 19.0.0(react@18.3.1)
       react-remove-scroll: 2.5.7(react@18.3.1)
       ua-parser-js: 1.0.40
-      viem: 2.22.2
+      viem: 2.22.2(zod@3.24.1)
       wagmi: 2.14.6(@tanstack/react-query@5.18.1)(react@18.3.1)(viem@2.22.2)
     transitivePeerDependencies:
       - "@types/react"
@@ -4299,7 +4299,7 @@ packages:
       }
     dependencies:
       "@safe-global/safe-gateway-typescript-sdk": 3.22.4
-      viem: 2.22.2
+      viem: 2.22.2(zod@3.24.1)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -5170,7 +5170,7 @@ packages:
       "@wagmi/core": 2.16.3(react@18.3.1)(use-sync-external-store@1.2.0)(viem@2.22.2)
       "@walletconnect/ethereum-provider": 2.17.0(@types/react@18.3.18)(react@18.3.1)
       cbw-sdk: /@coinbase/wallet-sdk@3.9.3
-      viem: 2.22.2
+      viem: 2.22.2(zod@3.24.1)
     transitivePeerDependencies:
       - "@azure/app-configuration"
       - "@azure/cosmos"
@@ -5243,7 +5243,7 @@ packages:
     dependencies:
       eventemitter3: 5.0.1
       mipd: 0.0.7(typescript@5.7.2)
-      viem: 2.22.2
+      viem: 2.22.2(zod@3.24.1)
       zustand: 5.0.0(@types/react@18.3.18)(react@18.3.1)(use-sync-external-store@1.2.0)
     transitivePeerDependencies:
       - "@types/react"
@@ -5777,6 +5777,7 @@ packages:
         optional: true
     dependencies:
       typescript: 5.7.2
+    dev: false
 
   /abitype@1.0.7(zod@3.24.1):
     resolution:
@@ -5810,6 +5811,7 @@ packages:
         optional: true
     dependencies:
       typescript: 5.7.2
+    dev: false
 
   /abitype@1.0.8(zod@3.24.1):
     resolution:
@@ -10654,28 +10656,6 @@ packages:
       safe-push-apply: 1.0.0
     dev: true
 
-  /ox@0.6.0:
-    resolution:
-      {
-        integrity: sha512-blUzTLidvUlshv0O02CnLFqBLidNzPoAZdIth894avUAotTuWziznv6IENv5idRuOSSP3dH8WzcYw84zVdu0Aw==,
-      }
-    peerDependencies:
-      typescript: ">=5.4.0"
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      "@adraffy/ens-normalize": 1.11.0
-      "@noble/curves": 1.7.0
-      "@noble/hashes": 1.6.1
-      "@scure/bip32": 1.6.0
-      "@scure/bip39": 1.5.0
-      abitype: 1.0.8(typescript@5.7.2)
-      eventemitter3: 5.0.1
-    transitivePeerDependencies:
-      - zod
-    dev: true
-
   /ox@0.6.0(typescript@5.7.2):
     resolution:
       {
@@ -13254,32 +13234,6 @@ packages:
     engines: { node: ">=12" }
     dev: true
 
-  /viem@2.22.2:
-    resolution:
-      {
-        integrity: sha512-HNATy2rwkQcC1JRYBJJujJTtVtDkWlQEB7GvAtn4GBXdbBROnjs8pGXwJAWhb/crErVk5yJ/Fh50yGtA9VZh8A==,
-      }
-    peerDependencies:
-      typescript: ">=5.0.4"
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      "@noble/curves": 1.7.0
-      "@noble/hashes": 1.6.1
-      "@scure/bip32": 1.6.0
-      "@scure/bip39": 1.5.0
-      abitype: 1.0.7(typescript@5.7.2)
-      isows: 1.0.6(ws@8.18.0)
-      ox: 0.6.0
-      webauthn-p256: 0.0.10
-      ws: 8.18.0
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
-    dev: true
-
   /viem@2.22.2(typescript@5.7.2):
     resolution:
       {
@@ -13527,7 +13481,7 @@ packages:
       "@wagmi/core": 2.16.3(react@18.3.1)(use-sync-external-store@1.2.0)(viem@2.22.2)
       react: 18.3.1
       use-sync-external-store: 1.2.0(react@18.3.1)
-      viem: 2.22.2
+      viem: 2.22.2(zod@3.24.1)
     transitivePeerDependencies:
       - "@azure/app-configuration"
       - "@azure/cosmos"
