@@ -11,7 +11,7 @@ const config: AxisDeploymentConfig = {
   chainIconUrl:
     "https://storage.bondprotocol.finance/6e41a561-e275-4698-bc36-548d30a80e96-bucket/chains/ARBITRUM.png",
   subgraphURL:
-    "https://subgraph.satsuma-prod.com/9d551092282a/spaces-team/axis-origin-arbitrum-one/version/v<VERSION>/api",
+    "https://api.goldsky.com/api/public/project_clu16lu24lqh201x9f0qh135t/subgraphs/axis-origin-arbitrum-one/<VERSION>/gn",
   rpcURL:
     "https://arb-mainnet.g.alchemy.com/v2/h6OEviwRZGmTSXHYPRmMquo5u-YoWLeY",
   wrapperContract: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
