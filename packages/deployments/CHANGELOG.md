@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.3
+
+### Patch Changes
+
+- 1ed0bfb: Subgraph version bump
+
 ## 0.0.2
 
 ### Patch Changes

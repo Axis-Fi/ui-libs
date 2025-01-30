@@ -1,5 +1,14 @@
 # @axis-finance/sdk
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [1ed0bfb]
+  - @axis-finance/deployments@0.0.3
+  - @axis-finance/env@0.0.4
+  - @axis-finance/cloak@0.0.4
+
 ## 0.0.8
 
 ### Patch Changes
