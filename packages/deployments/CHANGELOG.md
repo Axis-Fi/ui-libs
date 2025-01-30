@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.4
+
+### Patch Changes
+
+- 294ae91: Migrate Alchemy subgraphs to Goldsky due to ipfs resolving flaky
+
 ## 0.0.3
 
 ### Patch Changes
