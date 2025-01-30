@@ -1,5 +1,12 @@
 # @axis-finance/subgraph-client
 
+## 0.0.4
+
+### Patch Changes
+
+- 8540b25: Use latest subgraph versions
+- 7edb65e: Bump subgraph schema version
+
 ## 0.0.3
 
 ### Patch Changes
