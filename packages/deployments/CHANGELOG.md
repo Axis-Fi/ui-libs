@@ -1,5 +1,13 @@
 # @axis-finance/deployments
 
+## 0.0.5
+
+### Patch Changes
+
+- c266ad4: Add support for UNIv3 DTL + Allocated allowlist callback
+- Updated dependencies [c266ad4]
+  - @axis-finance/abis@0.0.3
+
 ## 0.0.4
 
 ### Patch Changes

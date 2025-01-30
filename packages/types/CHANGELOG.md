@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.7
+
+### Patch Changes
+
+- c266ad4: Add support for UNIv3 DTL + Allocated allowlist callback
+
 ## 0.0.6
 
 ### Patch Changes
