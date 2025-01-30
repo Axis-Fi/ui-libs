@@ -3113,8 +3113,20 @@ export type BatchAuctionLot = {
   createdDate: Scalars["String"]["output"];
   createdTransactionHash: Scalars["Bytes"]["output"];
   curated?: Maybe<BatchAuctionCurated>;
+  /**
+   * The address of the curator. If null, the lot is not curated.
+   *
+   */
   curator?: Maybe<Scalars["Bytes"]["output"]>;
+  /**
+   * Whether the curator has approved the lot. If false, the lot is not curated.
+   *
+   */
   curatorApproved: Scalars["Boolean"]["output"];
+  /**
+   * The curator fee as a percentage, where 1 = 100%
+   *
+   */
   curatorFee: Scalars["BigDecimal"]["output"];
   derivativeType?: Maybe<Scalars["String"]["output"]>;
   encryptedMarginalPrice?: Maybe<BatchEncryptedMarginalPriceLot>;
@@ -3129,9 +3141,17 @@ export type BatchAuctionLot = {
   linearVesting?: Maybe<BatchLinearVestingLot>;
   lotId: Scalars["BigInt"]["output"];
   maxBidId: Scalars["BigInt"]["output"];
+  /**
+   * The protocol fee as a percentage, where 1 = 100%
+   *
+   */
   protocolFee: Scalars["BigDecimal"]["output"];
   purchased: Scalars["BigDecimal"]["output"];
   quoteToken: Token;
+  /**
+   * The referrer fee as a percentage, where 1 = 100%
+   *
+   */
   referrerFee: Scalars["BigDecimal"]["output"];
   seller: Scalars["Bytes"]["output"];
   settled?: Maybe<BatchAuctionSettled>;
