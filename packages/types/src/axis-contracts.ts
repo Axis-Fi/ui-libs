@@ -24,7 +24,8 @@ export type AxisCallbackNames =
   | "baselineAllowlist"
   | "baselineAllocatedAllowlist"
   | "baselineCappedAllowlist"
-  | "baselineTokenAllowlist";
+  | "baselineTokenAllowlist"
+  | "uniswapV3DtlWithAllocatedMerkleAllowlist";
 
 export type AxisContractAddresses = Record<AxisContractNames, Address>;
 export type AxisCallbackAddresses = Record<AxisCallbackNames, Address[]>;

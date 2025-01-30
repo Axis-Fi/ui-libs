@@ -57,6 +57,9 @@ export function extractCallbacks(addresses: Partial<AxisPeripheryAddresses>) {
       baselineTokenAllowlist: addresses[
         "deployments.callbacks.BaselineTokenAllowlist"
       ] as Address[],
+      uniswapV3DtlWithAllocatedMerkleAllowlist: addresses[
+        "deployments.callbacks.BatchUniswapV3DirectToLiquidityWithAllocatedAllowlist"
+      ] as Address[],
     },
   };
 }

@@ -12,6 +12,7 @@ export enum CallbacksType {
   BASELINE_ALLOCATED_ALLOWLIST = "BaselineAllocatedAllowlist",
   BASELINE_CAPPED_ALLOWLIST = "BaselineCappedAllowlist",
   BASELINE_TOKEN_ALLOWLIST = "BaselineTokenAllowlist",
+  UNIV3_DTL_WITH_ALLOCATED_ALLOWLIST = "UniswapV3DirectToLiquidityWithAllocatedAllowlist",
 }
 
 export const isBaselineCallback = (callbacksType?: string) => {

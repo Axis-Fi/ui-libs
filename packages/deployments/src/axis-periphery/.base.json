@@ -17,6 +17,7 @@
   "deployments.callbacks.BatchUniswapV3DirectToLiquidity": [
     "0xE64d6e058dD5F76CCc8566c07b994090a24CCB75"
   ],
+  "deployments.callbacks.BatchUniswapV3DirectToLiquidityWithAllocatedAllowlist": [],
   "deployments.callbacks.Baseline": [],
   "deployments.callbacks.BaselineAllowlist": [],
   "deployments.callbacks.BaselineAllocatedAllowlist": [],

@@ -11,6 +11,7 @@
   "deployments.callbacks.BatchAllocatedMerkleAllowlist": [
     "0x98C8ffFf24bcfC3A5B0b463c43F10932Cedb7B8F"
   ],
+  "deployments.callbacks.BatchUniswapV3DirectToLiquidityWithAllocatedAllowlist": [],
   "deployments.callbacks.BaselineAllowlist": [],
   "deployments.callbacks.BaselineAllocatedAllowlist": [],
   "deployments.callbacks.BaselineCappedAllowlist": [],

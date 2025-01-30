@@ -21,6 +21,8 @@ import baselineCappedAllowlist from "./BaselineCappedAllowlist.json";
 import baselineTokenAllowlist from "./BaselineTokenAllowlist.json";
 import bpool from "./BPOOL.json";
 
+const uniswapV3DtlWithAllocatedMerkleAllowlist = uniV3Dtl;
+
 type ContractAbi = { abi: Abi };
 type ContractAbis = {
   batchCatalogue: ContractAbi;
@@ -43,6 +45,7 @@ type ContractAbis = {
   baselineCappedAllowlist: ContractAbi;
   baselineTokenAllowlist: ContractAbi;
   bpool: ContractAbi;
+  uniswapV3DtlWithAllocatedMerkleAllowlist: ContractAbi;
 };
 
 //Fetch errors from modules to include in the AuctionHouse ABI
@@ -80,6 +83,7 @@ const abis = {
   baselineCappedAllowlist,
   baselineTokenAllowlist,
   bpool,
+  uniswapV3DtlWithAllocatedMerkleAllowlist,
 } as ContractAbis;
 
 export default abis;

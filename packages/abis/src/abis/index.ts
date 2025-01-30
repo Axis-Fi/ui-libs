@@ -21,4 +21,5 @@ export default {
   baselineCappedAllowlist: abis.baselineCappedAllowlistAbi,
   baselineTokenAllowlist: abis.baselineTokenAllowlistAbi,
   bpool: abis.bpoolAbi,
+  uniswapV3DtlWithAllocatedMerkleAllowlist: abis.uniV3DtlAbi,
 } as const;
