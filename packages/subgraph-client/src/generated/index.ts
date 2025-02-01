@@ -7417,15 +7417,16 @@ export type GetBatchAuctionLotQuery = {
     lastUpdatedDate: string;
     lastUpdatedTransactionHash: string;
     maxBidId: string;
-    aborted?: { date: string } | null;
-    cancelled?: { date: string } | null;
     info?: {
       key?: string | null;
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
+      allowlist: Array<{ values: Array<string> }>;
       links: Array<{ linkId: string; url: string }>;
     } | null;
+    aborted?: { date: string } | null;
+    cancelled?: { date: string } | null;
     linearVesting?: {
       id: string;
       startDate: string;
@@ -7699,6 +7700,11 @@ export const GetBatchAuctionLotDocument = `
   batchAuctionLot(id: $id) {
     ...BatchCommonFields
     ...BatchAuctionFields
+    info {
+      allowlist {
+        values
+      }
+    }
   }
 }
     ${BatchCommonFieldsFragmentDoc}
