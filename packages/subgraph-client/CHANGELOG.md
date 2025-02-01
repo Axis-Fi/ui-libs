@@ -1,5 +1,11 @@
 # @axis-finance/subgraph-client
 
+## 0.0.5
+
+### Patch Changes
+
+- 9a1da29: Add allowlist data to individual subgraph response
+
 ## 0.0.4
 
 ### Patch Changes
