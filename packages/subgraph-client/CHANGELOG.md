@@ -1,5 +1,11 @@
 # @axis-finance/subgraph-client
 
+## 0.0.6
+
+### Patch Changes
+
+- a3c061b: add support for fetching auctions by base token address
+
 ## 0.0.5
 
 ### Patch Changes

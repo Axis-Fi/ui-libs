@@ -1,5 +1,16 @@
 # @axis-finance/sdk
 
+## 0.0.13
+
+### Patch Changes
+
+- a3c061b: add support for fetching auctions by base token address
+- Updated dependencies [a3c061b]
+  - @axis-finance/subgraph-client@0.0.6
+  - @axis-finance/types@0.0.9
+  - @axis-finance/deployments@0.0.5
+  - @axis-finance/env@0.0.6
+
 ## 0.0.12
 
 ### Patch Changes
