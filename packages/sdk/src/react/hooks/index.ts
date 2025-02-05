@@ -1,3 +1,4 @@
+export * from "./use-launch-by-address-query";
 export * from "./use-launch-query";
 export * from "./use-launches-query";
 export * from "./use-bid";
