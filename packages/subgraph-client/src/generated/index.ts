@@ -7499,6 +7499,123 @@ export type GetBatchAuctionLotQuery = {
   } | null;
 };
 
+export type GetBatchAuctionLotsByBaseTokenAddressQueryVariables = Exact<{
+  baseTokenAddress: Scalars["String"]["input"];
+}>;
+
+export type GetBatchAuctionLotsByBaseTokenAddressQuery = {
+  batchAuctionLots: Array<{
+    id: string;
+    chain: string;
+    auctionHouse: string;
+    lotId: string;
+    createdBlockNumber: string;
+    createdBlockTimestamp: string;
+    createdDate: string;
+    createdTransactionHash: string;
+    capacityInitial: string;
+    start: string;
+    conclusion: string;
+    auctionType: string;
+    seller: string;
+    derivativeType?: string | null;
+    wrapDerivative: boolean;
+    callbacks: string;
+    curator?: string | null;
+    curatorApproved: boolean;
+    curatorFee: string;
+    protocolFee: string;
+    referrerFee: string;
+    capacity: string;
+    sold: string;
+    purchased: string;
+    lastUpdatedBlockNumber: string;
+    lastUpdatedBlockTimestamp: string;
+    lastUpdatedDate: string;
+    lastUpdatedTransactionHash: string;
+    maxBidId: string;
+    aborted?: { date: string } | null;
+    cancelled?: { date: string } | null;
+    info?: {
+      key?: string | null;
+      name?: string | null;
+      description?: string | null;
+      tagline?: string | null;
+      links: Array<{ linkId: string; url: string }>;
+    } | null;
+    linearVesting?: {
+      id: string;
+      startDate: string;
+      expiryDate: string;
+      startTimestamp: string;
+      expiryTimestamp: string;
+      redemptions: Array<{
+        id: string;
+        bidder: string;
+        redeemed: string;
+        remaining: string;
+      }>;
+    } | null;
+    baseToken: {
+      totalSupply: string;
+      address: string;
+      decimals: string;
+      symbol: string;
+      name: string;
+    };
+    quoteToken: {
+      address: string;
+      decimals: string;
+      symbol: string;
+      name: string;
+    };
+    created: { infoHash: string };
+    curated?: { curator: string } | null;
+    bids: Array<{
+      bidId: string;
+      bidder: string;
+      blockTimestamp: string;
+      date: string;
+      amountIn: string;
+      rawAmountIn: string;
+      rawAmountOut?: string | null;
+      rawMarginalPrice?: string | null;
+      rawSubmittedPrice?: string | null;
+      submittedPrice?: string | null;
+      settledAmountIn?: string | null;
+      settledAmountInRefunded?: string | null;
+      settledAmountOut?: string | null;
+      status: string;
+      outcome?: string | null;
+      referrer?: string | null;
+      claimed?: { id: string } | null;
+    }>;
+    bidsDecrypted: Array<{ id: string }>;
+    bidsClaimed: Array<{ id: string }>;
+    bidsRefunded: Array<{ id: string }>;
+    encryptedMarginalPrice?: {
+      id: string;
+      status: string;
+      settlementSuccessful: boolean;
+      minPrice: string;
+      minFilled: string;
+      minBidSize: string;
+      marginalPrice?: string | null;
+      hasPartialFill?: boolean | null;
+    } | null;
+    fixedPrice?: {
+      id: string;
+      status: string;
+      settlementSuccessful: boolean;
+      price: string;
+      minFilled: string;
+      hasPartialFill?: boolean | null;
+      partialBidId?: string | null;
+    } | null;
+    settled?: { id: string } | null;
+  }>;
+};
+
 export type GetInstalledModulesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetInstalledModulesQuery = {
@@ -7727,6 +7844,48 @@ export const useGetBatchAuctionLotQuery = <
       dataSource.endpoint,
       dataSource.fetchParams || {},
       GetBatchAuctionLotDocument,
+      variables,
+    ),
+    ...options,
+  });
+};
+
+export const GetBatchAuctionLotsByBaseTokenAddressDocument = `
+    query getBatchAuctionLotsByBaseTokenAddress($baseTokenAddress: String!) {
+  batchAuctionLots(where: {baseToken: $baseTokenAddress}) {
+    ...BatchCommonFields
+    ...BatchAuctionFields
+  }
+}
+    ${BatchCommonFieldsFragmentDoc}
+${BatchAuctionFieldsFragmentDoc}`;
+
+export const useGetBatchAuctionLotsByBaseTokenAddressQuery = <
+  TData = GetBatchAuctionLotsByBaseTokenAddressQuery,
+  TError = unknown,
+>(
+  dataSource: { endpoint: string; fetchParams?: RequestInit },
+  variables: GetBatchAuctionLotsByBaseTokenAddressQueryVariables,
+  options?: Omit<
+    UseQueryOptions<GetBatchAuctionLotsByBaseTokenAddressQuery, TError, TData>,
+    "queryKey"
+  > & {
+    queryKey?: UseQueryOptions<
+      GetBatchAuctionLotsByBaseTokenAddressQuery,
+      TError,
+      TData
+    >["queryKey"];
+  },
+) => {
+  return useQuery<GetBatchAuctionLotsByBaseTokenAddressQuery, TError, TData>({
+    queryKey: ["getBatchAuctionLotsByBaseTokenAddress", variables],
+    queryFn: fetcher<
+      GetBatchAuctionLotsByBaseTokenAddressQuery,
+      GetBatchAuctionLotsByBaseTokenAddressQueryVariables
+    >(
+      dataSource.endpoint,
+      dataSource.fetchParams || {},
+      GetBatchAuctionLotsByBaseTokenAddressDocument,
       variables,
     ),
     ...options,
