@@ -152,6 +152,11 @@ query getBatchAuctionLotsByBaseTokenAddress($baseTokenAddress: String!) {
   batchAuctionLots(where: { baseToken: $baseTokenAddress }) {
     ...BatchCommonFields
     ...BatchAuctionFields
+    info {
+      allowlist {
+        values
+      }
+    }
   }
 }
 

@@ -7534,15 +7534,16 @@ export type GetBatchAuctionLotsByBaseTokenAddressQuery = {
     lastUpdatedDate: string;
     lastUpdatedTransactionHash: string;
     maxBidId: string;
-    aborted?: { date: string } | null;
-    cancelled?: { date: string } | null;
     info?: {
       key?: string | null;
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
+      allowlist: Array<{ values: Array<string> }>;
       links: Array<{ linkId: string; url: string }>;
     } | null;
+    aborted?: { date: string } | null;
+    cancelled?: { date: string } | null;
     linearVesting?: {
       id: string;
       startDate: string;
@@ -7855,6 +7856,11 @@ export const GetBatchAuctionLotsByBaseTokenAddressDocument = `
   batchAuctionLots(where: {baseToken: $baseTokenAddress}) {
     ...BatchCommonFields
     ...BatchAuctionFields
+    info {
+      allowlist {
+        values
+      }
+    }
   }
 }
     ${BatchCommonFieldsFragmentDoc}
