@@ -11,6 +11,7 @@ import {
   getMetadataServer,
 } from "@axis-finance/env";
 import * as core from "../core";
+import * as periphery from "../periphery";
 import type { MetadataClient, MetadataRouter, OriginConfig } from "../types";
 import type {
   Core,
@@ -30,6 +31,11 @@ import type {
   CreateConfig,
   CreateParams,
 } from "../core";
+import type {
+  Periphery,
+  SetMerkleRootConfig,
+  SetMerkleRootParams,
+} from "../periphery";
 
 const defaultConfig: OriginConfig = {
   environment: Environment.PRODUCTION,
@@ -56,6 +62,7 @@ const defaultConfig: OriginConfig = {
 class OriginSdk {
   config: OriginConfig;
   core: Core;
+  periphery: Periphery;
   deployments: AxisDeployments;
   cloakClient: CloakClient;
   metadataClient: MetadataClient;
@@ -63,11 +70,13 @@ class OriginSdk {
   constructor(
     _config: OriginConfig = defaultConfig,
     _core: Core = core,
+    _periphery: Periphery = periphery,
     _deployments: AxisDeployments = deployments,
   ) {
     this.config = _config;
     this.core = _core;
     this.deployments = _deployments;
+    this.periphery = _periphery;
 
     this.cloakClient = createCloakClient(
       new Configuration({ basePath: _config.cloak.url }),
@@ -264,6 +273,10 @@ class OriginSdk {
    */
   async create(params: CreateParams): Promise<CreateConfig> {
     return this.core.create.getConfig(params, this.metadataClient);
+  }
+
+  setMerkleRoot(params: SetMerkleRootParams): SetMerkleRootConfig {
+    return this.periphery.callbacks.setMerkleRoot.getConfig(params);
   }
 }
 

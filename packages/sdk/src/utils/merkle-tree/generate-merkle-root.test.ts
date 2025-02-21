@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { generateMerkleTreeRoot } from "./generate-merkle-root";
+import { generateMerkleRoot } from "./generate-merkle-root";
 
 const ALLOWLIST = [
   ["0x0000000000000000000000000000000000000004"],
@@ -44,7 +44,7 @@ const BASE_ERROR = "Failed to generate Merkle Tree Root due to:\n";
 
 describe("getSetMerkleRootParams()", () => {
   it("generates a merkle tree root for an allowlist", () => {
-    const result = generateMerkleTreeRoot({
+    const result = generateMerkleRoot({
       types: ["address"],
       values: ALLOWLIST,
     });
@@ -53,7 +53,7 @@ describe("getSetMerkleRootParams()", () => {
   });
 
   it("generates a merkle tree root for an allocated allowlist", () => {
-    const result = generateMerkleTreeRoot({
+    const result = generateMerkleRoot({
       types: ["address", "uint256"],
       values: ALLOCATED_ALLOWLIST,
     });
@@ -63,7 +63,7 @@ describe("getSetMerkleRootParams()", () => {
 
   it("throws an error on invalid allowlist", () => {
     expect(() =>
-      generateMerkleTreeRoot({
+      generateMerkleRoot({
         types: ["address", "uint256"],
         values: MISSING_AMOUNT_ALLOCATED_ALLOWLIST,
       }),
@@ -72,7 +72,7 @@ describe("getSetMerkleRootParams()", () => {
 
   it("throws an error on invalid addresses", () => {
     expect(() =>
-      generateMerkleTreeRoot({
+      generateMerkleRoot({
         types: ["address"],
         values: INVALID_ADDRESS_ALLOWLIST,
       }),
@@ -81,7 +81,7 @@ describe("getSetMerkleRootParams()", () => {
 
   it("throws an error on invalid amounts", () => {
     expect(() =>
-      generateMerkleTreeRoot({
+      generateMerkleRoot({
         types: ["address", "uint256"],
         values: INVALID_AMOUNT_ALLOCATED_ALLOWLIST,
       }),
@@ -90,7 +90,7 @@ describe("getSetMerkleRootParams()", () => {
 
   it("throws composed errors", () => {
     expect(() =>
-      generateMerkleTreeRoot({
+      generateMerkleRoot({
         types: ["address", "uint256"],
         values: [
           ...INVALID_AMOUNT_ALLOCATED_ALLOWLIST,

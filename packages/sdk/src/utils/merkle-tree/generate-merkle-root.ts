@@ -2,19 +2,19 @@ import * as v from "valibot";
 import { StandardMerkleTree } from "@openzeppelin/merkle-tree";
 import { GenerateMerkleTreeParams } from "./types";
 import { schema } from "./schema";
-import { isAddress } from "viem";
+import { Hex, isAddress } from "viem";
 
 /**
  * Generates a Merkle Tree Root for an allowlist file format
  * */
-export const generateMerkleTreeRoot = (args: GenerateMerkleTreeParams) => {
+export const generateMerkleRoot = (args: GenerateMerkleTreeParams): Hex => {
   const { values, types } = v.parse(schema, args);
 
   validateAllowlistEntries(args);
 
   const { root } = StandardMerkleTree.of(values, types);
 
-  return root;
+  return root as Hex;
 };
 
 /**
