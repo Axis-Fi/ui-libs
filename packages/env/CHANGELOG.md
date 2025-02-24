@@ -1,5 +1,11 @@
 # @axis-finance/env
 
+## 0.0.7
+
+### Patch Changes
+
+- dee857a: Migrate fireworks ipfs-api to this repo and refactor
+
 ## 0.0.6
 
 ### Patch Changes
