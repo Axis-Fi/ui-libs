@@ -3,7 +3,11 @@ import {
   createPublicClient,
   createWalletClient,
   http,
+  type HttpTransport,
+  type PrivateKeyAccount,
   type Address,
+  type WalletClient,
+  type PublicClient,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { registry } from "./env";
@@ -16,15 +20,20 @@ if (process.env.SIGNER_KEY == null) {
 
 const signerKey = process.env.SIGNER_KEY! as Address;
 
-const walletClient = createWalletClient({
+const walletClient: WalletClient<
+  HttpTransport,
+  typeof registry.chain,
+  PrivateKeyAccount
+> = createWalletClient({
   account: privateKeyToAccount(signerKey),
   transport: http(),
   chain: registry.chain,
 });
 
-const publicClient = createPublicClient({
-  chain: registry.chain,
-  transport: http(),
-});
+const publicClient: PublicClient<HttpTransport, typeof registry.chain> =
+  createPublicClient({
+    chain: registry.chain,
+    transport: http(),
+  });
 
 export { walletClient, publicClient };
