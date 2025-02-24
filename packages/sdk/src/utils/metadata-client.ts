@@ -5,6 +5,10 @@ import {
 
 type MetadataClientConfig = {
   fleekApplicationClientId: string;
+  authAppsServiceUrl?: string;
+  graphqlServiceApiUrl?: string;
+  ipfsStorageApiUrl?: string;
+  uploadProxyApiUrl?: string;
 };
 
 export type SaveParams = {
@@ -15,17 +19,27 @@ export type SaveParams = {
 export class MetadataClient {
   private sdk: FleekSdk;
 
-  constructor({ fleekApplicationClientId }: MetadataClientConfig) {
+  constructor({
+    fleekApplicationClientId,
+    authAppsServiceUrl,
+    graphqlServiceApiUrl,
+    ipfsStorageApiUrl,
+    uploadProxyApiUrl,
+  }: MetadataClientConfig) {
     if (!fleekApplicationClientId) {
       throw new Error("Fleek application client ID is required");
     }
 
     const applicationService = new ApplicationAccessTokenService({
       clientId: fleekApplicationClientId,
+      authAppsServiceUrl,
     });
 
     this.sdk = new FleekSdk({
       accessTokenService: applicationService,
+      graphqlServiceApiUrl,
+      ipfsStorageApiUrl,
+      uploadProxyApiUrl,
     });
   }
 
