@@ -9,6 +9,7 @@ const Bytes5Schema = v.custom<Hex>((input: unknown): boolean =>
 );
 
 const AuctionMetadataSchema = v.object({
+  id: v.optional(v.string()),
   name: v.string(),
   description: v.string(),
   tagline: v.string(),

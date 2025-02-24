@@ -8,11 +8,16 @@ import { type AxisDeployments, deployments } from "@axis-finance/deployments";
 import {
   Environment,
   getCloakServer,
-  getMetadataServer,
+  getCuratorServer,
 } from "@axis-finance/env";
 import * as core from "../core";
 import * as periphery from "../periphery";
-import type { MetadataClient, MetadataRouter, OriginConfig } from "../types";
+import {
+  MetadataClient,
+  type CuratorClient,
+  type CuratorRouter,
+  type OriginConfig,
+} from "../types";
 import type {
   Core,
   BidParams,
@@ -36,14 +41,15 @@ import type {
   SetMerkleRootConfig,
   SetMerkleRootParams,
 } from "../periphery";
+import { SaveParams } from "../utils/metadata-client";
 
 const defaultConfig: OriginConfig = {
   environment: Environment.PRODUCTION,
   cloak: {
     url: getCloakServer(Environment.PRODUCTION).url,
   },
-  metadata: {
-    url: getMetadataServer(Environment.PRODUCTION).url,
+  curator: {
+    url: getCuratorServer(Environment.PRODUCTION).url,
   },
 };
 
@@ -65,7 +71,8 @@ class OriginSdk {
   periphery: Periphery;
   deployments: AxisDeployments;
   cloakClient: CloakClient;
-  metadataClient: MetadataClient;
+  metadataClient?: MetadataClient;
+  curatorClient: CuratorClient;
 
   constructor(
     _config: OriginConfig = defaultConfig,
@@ -82,13 +89,19 @@ class OriginSdk {
       new Configuration({ basePath: _config.cloak.url }),
     );
 
-    this.metadataClient = createTRPCProxyClient<MetadataRouter>({
+    this.curatorClient = createTRPCProxyClient<CuratorRouter>({
       links: [
         httpBatchLink({
-          url: _config.metadata.url,
+          url: _config.curator.url,
         }),
       ],
     });
+
+    this.metadataClient = _config.metadata?.fleekApplicationClientId
+      ? new MetadataClient({
+          fleekApplicationClientId: _config.metadata?.fleekApplicationClientId,
+        })
+      : undefined;
   }
 
   async getTokenPrice(params: GetTokenPriceParams): Promise<number> {
@@ -277,6 +290,10 @@ class OriginSdk {
 
   setMerkleRoot(params: SetMerkleRootParams): SetMerkleRootConfig {
     return this.periphery.callbacks.setMerkleRoot.getConfig(params);
+  }
+
+  async saveMetadata(params: SaveParams): Promise<string | undefined> {
+    return this.metadataClient?.save(params);
   }
 }
 

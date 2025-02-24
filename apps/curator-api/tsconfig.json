@@ -1,0 +1,6 @@
+{
+  "extends": "@axis-finance/typescript-config/base.json",
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"],
+  "files": ["src/express.d.ts"]
+}
