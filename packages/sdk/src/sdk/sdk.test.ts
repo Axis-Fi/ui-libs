@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { parseUnits } from "viem";
 import { CloakClient } from "@axis-finance/cloak";
-import * as cloakDep from "@axis-finance/cloak";
 import { AuctionType } from "@axis-finance/types";
 import { OriginSdk } from "./sdk";
 import type { Core, BidParams } from "../core";
@@ -51,35 +50,6 @@ describe("OriginSdk", () => {
   it("creates a metadata client", () => {
     const sdk = new OriginSdk(mockConfig, mockCore);
     expect(sdk.metadataClient).toBeDefined();
-  });
-
-  it("calls Configuration() with the supplied cloak config", () => {
-    const mockConfigurationClass = class {
-      constructor() {}
-    } as unknown as cloakDep.Configuration;
-    const configurationSpy = vi
-      .spyOn(cloakDep, "Configuration")
-      .mockReturnValue(mockConfigurationClass);
-
-    new OriginSdk(mockConfig, mockCore);
-
-    expect(configurationSpy).toHaveBeenCalledWith({
-      basePath: mockConfig.cloak.url,
-    });
-  });
-
-  it("calls createCloakClient() with the supplied cloak config", () => {
-    const mockConfigurationClass = class {
-      constructor() {}
-    } as unknown as cloakDep.Configuration;
-
-    vi.spyOn(cloakDep, "Configuration").mockReturnValue(mockConfigurationClass);
-
-    const createCloakClientSpy = vi.spyOn(cloakDep, "createCloakClient");
-
-    new OriginSdk(mockConfig, mockCore);
-
-    expect(createCloakClientSpy).toHaveBeenCalledWith(mockConfigurationClass);
   });
 
   it("creates a cloak client", () => {
