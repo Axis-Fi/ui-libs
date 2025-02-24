@@ -5,12 +5,12 @@ import { abis } from "@axis-finance/abis";
 import { schema } from "./schema";
 import { type MetadataClient, SdkError } from "../../types";
 import type { CreateConfig, CreateParams } from "./types";
-import { getTimestamp, toKeycode, storeMetadata } from "./utils";
+import { getTimestamp, toKeycode } from "./utils";
 import { getAuctionModuleParams } from "../../modules/auctions/utils";
 
 const getConfig = async (
   params: CreateParams,
-  metadataClient: MetadataClient,
+  metadataClient?: MetadataClient,
 ): Promise<CreateConfig> => {
   const parsedParams = v.safeParse(schema, params);
 
@@ -30,10 +30,13 @@ const getConfig = async (
 
   const auctionModuleParams = getAuctionModuleParams(params);
 
-  const metadataIpfsHash = await storeMetadata(
-    params.auction.metadata,
-    metadataClient,
-  );
+  const metadataIpfsHash =
+    metadataClient != null
+      ? await metadataClient.save({
+          metadata: params.auction.metadata.toString(),
+          id: params.auction.metadata.id,
+        })
+      : "";
 
   return {
     abi: abis.batchAuctionHouse,

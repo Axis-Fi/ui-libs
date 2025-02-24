@@ -28,26 +28,29 @@
     "build:types": "tsc"
   },
   "dependencies": {
-    "@axis-finance/types": "workspace:*",
     "@axis-finance/abis": "workspace:*",
     "@axis-finance/cloak": "workspace:*",
     "@axis-finance/deployments": "workspace:*",
     "@axis-finance/env": "workspace:*",
     "@axis-finance/subgraph-client": "workspace:*",
-    "abitype": "^1.0.2",
+    "@axis-finance/types": "workspace:*",
+    "@fleek-platform/sdk": "3.6.1-rc.1",
     "@trpc/client": "^10.45.1",
+    "abitype": "^1.0.2",
     "valibot": "^0.42.1"
   },
   "devDependencies": {
     "@axis-finance/eslint-config": "workspace:*",
-    "@axis-finance/typescript-config": "workspace:*",
     "@axis-finance/tsup-config": "workspace:*",
+    "@axis-finance/typescript-config": "workspace:*",
     "@types/react": "^18.3.12",
+    "@vitest/browser": "3.0.6",
     "@vitest/coverage-istanbul": "^1.5.0",
-    "vite": "^5.0.8",
-    "vitest": "^1.5.0",
+    "playwright": "1.50.1",
     "tsup": "^8.1.0",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vite": "^5.0.8",
+    "vitest": "^3.0.6"
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5.18.1",
