@@ -1,5 +1,11 @@
 # @axis-finance/curator-api
 
+## 0.0.3
+
+### Patch Changes
+
+- fb53618: Include dist in curator package.json entry
+
 ## 0.0.2
 
 ### Patch Changes
