@@ -8,8 +8,9 @@ import type {
   ExtractAbiFunctionNames,
 } from "abitype";
 import { AuctionMetadataSchema } from "./core/create/schema";
-import { CreateTRPCProxyClient } from "@trpc/client";
+import type { CreateTRPCProxyClient } from "@trpc/client";
 import { Environment } from "@axis-finance/env";
+import { MetadataClient } from "./utils/metadata-client";
 
 class SdkError<TInput> extends Error {
   issues?: v.BaseIssue<TInput>[] | undefined;
@@ -59,7 +60,10 @@ type OriginConfig = {
   cloak: {
     url: string;
   };
-  metadata: {
+  metadata?: {
+    fleekApplicationClientId: string;
+  };
+  curator: {
     url: string;
   };
   subgraph?: {
@@ -71,11 +75,17 @@ type OriginConfig = {
 
 /**
  * Type-safe tRPC client for the IPFS API.
- * The server isn't public so we need to define the same type here.
+ * TODO: this duplication avoids circular ref by not importing from an `/app` package.
+ * Eventually curator-api could pull schema from this package.
  */
 const t = initTRPC.create({
   isServer: false,
   allowOutsideOfServer: true,
+});
+
+export const CuratorProfileSchema = v.object({
+  curatorProfilePayload: v.string(),
+  ipfsCid: v.string(),
 });
 
 const router = t.router({
@@ -83,18 +93,34 @@ const router = t.router({
     .input(v.parser(AuctionMetadataSchema))
     .output(v.parser(v.string()))
     .mutation(() => ""),
+  bustAxisFollowingCache: t.procedure
+    .input(v.parser(v.object({ pwd: v.string() })))
+    .query(() => true),
+  axisFollowing: t.procedure.input(v.parser(v.void())).query(() => true),
+  getSigningSignatureForCurator: t.procedure
+    .input(v.parser(CuratorProfileSchema))
+    .output(
+      v.parser(
+        v.object({
+          signature: v.string(),
+        }),
+      ),
+    )
+    .mutation(() => ({
+      signature: "",
+    })),
 });
 
-type MetadataRouter = typeof router;
+type CuratorRouter = typeof router;
 
-type MetadataClient = CreateTRPCProxyClient<MetadataRouter>;
+type CuratorClient = CreateTRPCProxyClient<CuratorRouter>;
 
 export type {
   OriginConfig,
   ContractConfig,
   ContractFunctionReturn,
-  MetadataClient,
-  MetadataRouter,
+  CuratorClient,
+  CuratorRouter,
 };
 
-export { SdkError };
+export { SdkError, MetadataClient };
