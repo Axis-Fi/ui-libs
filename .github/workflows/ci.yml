@@ -25,6 +25,9 @@ jobs:
           node-version: "21.6.0"
           cache: "pnpm"
 
+      - name: Setup Playwright
+        run: pnpx playwright install --with-deps
+
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
