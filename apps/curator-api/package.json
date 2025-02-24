@@ -7,6 +7,10 @@
   },
   "description": "Service for verifying curator Twitter accounts",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "predev": "npm run build",
@@ -15,7 +19,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@axis-finance/sdk": "workspace:*",
     "@trpc/server": "^10.45.1",
