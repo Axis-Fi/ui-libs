@@ -1,5 +1,12 @@
 # @axis-finance/curator-api
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [06c76dc]
+  - @axis-finance/sdk@0.0.18
+
 ## 0.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @axis-finance/sdk
 
+## 0.0.18
+
+### Patch Changes
+
+- 06c76dc: Use non-rc release of fleek now issue is resolved.
+
 ## 0.0.17
 
 ### Patch Changes
