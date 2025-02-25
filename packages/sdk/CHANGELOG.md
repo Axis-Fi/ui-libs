@@ -1,5 +1,11 @@
 # @axis-finance/sdk
 
+## 0.0.17
+
+### Patch Changes
+
+- 0f21db0: Bump Fleek sdk version
+
 ## 0.0.16
 
 ### Patch Changes
