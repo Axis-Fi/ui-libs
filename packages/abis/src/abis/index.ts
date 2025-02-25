@@ -22,4 +22,5 @@ export default {
   baselineTokenAllowlist: abis.baselineTokenAllowlistAbi,
   bpool: abis.bpoolAbi,
   uniswapV3DtlWithAllocatedMerkleAllowlist: abis.uniV3DtlAbi,
+  axisMetadataRegistry: abis.axisMetadataRegistryAbi,
 } as const;

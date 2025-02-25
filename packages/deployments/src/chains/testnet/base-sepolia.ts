@@ -4,6 +4,8 @@ import { weth, usdc } from "../../tokens/common";
 import core from "../../axis-core/.base-sepolia.json";
 import periphery from "../../axis-periphery/.base-sepolia.json";
 import { extractAddresses, extractCallbacks } from "../helpers";
+import registry from "../../axis-utils/.base-sepolia.json";
+import { Address } from "@axis-finance/types";
 
 const config: AxisDeploymentConfig = {
   name: "base-sepolia",
@@ -29,6 +31,7 @@ const config: AxisDeploymentConfig = {
   ],
   ...extractAddresses(core),
   ...extractCallbacks(periphery),
+  registry: registry["deployments.utils.registry"][0] as Address,
 };
 
 export default config;
