@@ -15,6 +15,7 @@ export type AxisDeployment = {
   subgraphURL: string;
   addresses: AxisContractAddresses;
   callbacks?: AxisCallbackAddresses;
+  registry?: Address;
 };
 
 /** Raw deployment data used to generate the final config*/

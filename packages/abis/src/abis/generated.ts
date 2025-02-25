@@ -170,6 +170,307 @@ export const allocatedMerkleAllowlistAbi = [
 ] as const;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// axisMetadataRegistry
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const axisMetadataRegistryAbi = [
+  {
+    type: "constructor",
+    inputs: [
+      { name: "serviceSigner_", internalType: "address", type: "address" },
+      { name: "auctionHouses_", internalType: "address[]", type: "address[]" },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [],
+    name: "DOMAIN_SEPARATOR",
+    outputs: [{ name: "", internalType: "bytes32", type: "bytes32" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "auctionHouse_", internalType: "address", type: "address" },
+    ],
+    name: "addAuctionHouse",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "xId_", internalType: "uint256", type: "uint256" },
+      { name: "curator_", internalType: "address", type: "address" },
+    ],
+    name: "addCuratorAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "auctionHouse", internalType: "address", type: "address" },
+      { name: "lotId", internalType: "uint96", type: "uint96" },
+    ],
+    name: "auctionMetadata",
+    outputs: [{ name: "ipfsCID", internalType: "string", type: "string" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [],
+    name: "chainId",
+    outputs: [{ name: "", internalType: "uint256", type: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [{ name: "curator", internalType: "address", type: "address" }],
+    name: "curatorId",
+    outputs: [{ name: "xId", internalType: "uint256", type: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [{ name: "xId", internalType: "uint256", type: "uint256" }],
+    name: "curatorMetadata",
+    outputs: [{ name: "ipfsCID", internalType: "string", type: "string" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [
+      {
+        name: "payload_",
+        internalType: "struct IMetadataRegistry.CuratorRegistration",
+        type: "tuple",
+        components: [
+          { name: "curator", internalType: "address", type: "address" },
+          { name: "xId", internalType: "uint256", type: "uint256" },
+          { name: "ipfsCID", internalType: "string", type: "string" },
+        ],
+      },
+    ],
+    name: "getDigest",
+    outputs: [{ name: "", internalType: "bytes32", type: "bytes32" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [{ name: "", internalType: "address", type: "address" }],
+    name: "isAuctionHouse",
+    outputs: [{ name: "", internalType: "bool", type: "bool" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "signer_", internalType: "address", type: "address" },
+      {
+        name: "payload_",
+        internalType: "struct IMetadataRegistry.CuratorRegistration",
+        type: "tuple",
+        components: [
+          { name: "curator", internalType: "address", type: "address" },
+          { name: "xId", internalType: "uint256", type: "uint256" },
+          { name: "ipfsCID", internalType: "string", type: "string" },
+        ],
+      },
+      { name: "signature_", internalType: "bytes", type: "bytes" },
+    ],
+    name: "isValidSignature",
+    outputs: [{ name: "", internalType: "bool", type: "bool" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [],
+    name: "owner",
+    outputs: [{ name: "", internalType: "address", type: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "auctionHouse_", internalType: "address", type: "address" },
+      { name: "lotId_", internalType: "uint96", type: "uint96" },
+      { name: "ipfsCID_", internalType: "string", type: "string" },
+    ],
+    name: "registerAuction",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      {
+        name: "payload_",
+        internalType: "struct IMetadataRegistry.CuratorRegistration",
+        type: "tuple",
+        components: [
+          { name: "curator", internalType: "address", type: "address" },
+          { name: "xId", internalType: "uint256", type: "uint256" },
+          { name: "ipfsCID", internalType: "string", type: "string" },
+        ],
+      },
+      { name: "signature_", internalType: "bytes", type: "bytes" },
+    ],
+    name: "registerCurator",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "auctionHouse_", internalType: "address", type: "address" },
+    ],
+    name: "removeAuctionHouse",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "xId_", internalType: "uint256", type: "uint256" },
+      { name: "curator_", internalType: "address", type: "address" },
+    ],
+    name: "removeCuratorAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [],
+    name: "serviceSigner",
+    outputs: [{ name: "", internalType: "address", type: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    inputs: [{ name: "newOwner", internalType: "address", type: "address" }],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "xId_", internalType: "uint256", type: "uint256" },
+      { name: "ipfsCID_", internalType: "string", type: "string" },
+    ],
+    name: "updateCurator",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [],
+    name: "updateDomainSeparator",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    inputs: [
+      { name: "serviceSigner_", internalType: "address", type: "address" },
+    ],
+    name: "updateServiceSigner",
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    anonymous: false,
+    inputs: [
+      {
+        name: "auctionHouse",
+        internalType: "address",
+        type: "address",
+        indexed: false,
+      },
+      { name: "lotId", internalType: "uint96", type: "uint96", indexed: false },
+      {
+        name: "ipfsCID",
+        internalType: "string",
+        type: "string",
+        indexed: false,
+      },
+    ],
+    name: "AuctionRegistered",
+  },
+  {
+    type: "event",
+    anonymous: false,
+    inputs: [
+      {
+        name: "curator",
+        internalType: "address",
+        type: "address",
+        indexed: false,
+      },
+      { name: "xId", internalType: "uint256", type: "uint256", indexed: false },
+      {
+        name: "ipfsCID",
+        internalType: "string",
+        type: "string",
+        indexed: false,
+      },
+    ],
+    name: "CuratorRegistered",
+  },
+  {
+    type: "event",
+    anonymous: false,
+    inputs: [
+      { name: "xId", internalType: "uint256", type: "uint256", indexed: false },
+      {
+        name: "ipfsCID",
+        internalType: "string",
+        type: "string",
+        indexed: false,
+      },
+    ],
+    name: "CuratorUpdated",
+  },
+  {
+    type: "event",
+    anonymous: false,
+    inputs: [
+      {
+        name: "previousOwner",
+        internalType: "address",
+        type: "address",
+        indexed: true,
+      },
+      {
+        name: "newOwner",
+        internalType: "address",
+        type: "address",
+        indexed: true,
+      },
+    ],
+    name: "OwnershipTransferred",
+  },
+  { type: "error", inputs: [], name: "AlreadyAssigned" },
+  {
+    type: "error",
+    inputs: [{ name: "param", internalType: "string", type: "string" }],
+    name: "InvalidParam",
+  },
+  { type: "error", inputs: [], name: "InvalidSignature" },
+  { type: "error", inputs: [], name: "NotAuthorized" },
+] as const;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // baseline
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -12,6 +12,7 @@ import {
 } from "@axis-finance/env";
 import * as core from "../core";
 import * as periphery from "../periphery";
+import * as registry from "../registry";
 import {
   MetadataClient,
   type CuratorClient,
@@ -42,6 +43,11 @@ import type {
   SetMerkleRootParams,
 } from "../periphery";
 import { SaveParams } from "../utils/metadata-client";
+import type {
+  Registry,
+  RegisterAuctionParams,
+  RegisterAuctionConfig,
+} from "../registry";
 
 const defaultConfig: OriginConfig = {
   environment: Environment.PRODUCTION,
@@ -69,6 +75,7 @@ class OriginSdk {
   config: OriginConfig;
   core: Core;
   periphery: Periphery;
+  registry: Registry;
   deployments: AxisDeployments;
   cloakClient: CloakClient;
   metadataClient?: MetadataClient;
@@ -78,12 +85,14 @@ class OriginSdk {
     _config: OriginConfig = defaultConfig,
     _core: Core = core,
     _periphery: Periphery = periphery,
+    _registry: Registry = registry,
     _deployments: AxisDeployments = deployments,
   ) {
     this.config = _config;
     this.core = _core;
     this.deployments = _deployments;
     this.periphery = _periphery;
+    this.registry = _registry;
 
     this.cloakClient = createCloakClient(
       new Configuration({ basePath: _config.cloak.url }),
@@ -294,6 +303,10 @@ class OriginSdk {
 
   async saveMetadata(params: SaveParams): Promise<string | undefined> {
     return this.metadataClient?.save(params);
+  }
+
+  registerAuction(params: RegisterAuctionParams): RegisterAuctionConfig {
+    return this.registry.registerAuction.getConfig(params);
   }
 }
 
