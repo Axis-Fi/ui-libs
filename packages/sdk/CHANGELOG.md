@@ -1,5 +1,11 @@
 # @axis-finance/sdk
 
+## 0.0.15
+
+### Patch Changes
+
+- dd1b386: Allow custom Fleek options
+
 ## 0.0.14
 
 ### Patch Changes
