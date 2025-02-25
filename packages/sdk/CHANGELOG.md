@@ -1,5 +1,11 @@
 # @axis-finance/sdk
 
+## 0.0.16
+
+### Patch Changes
+
+- 0e67f58: Expose metadata client config
+
 ## 0.0.15
 
 ### Patch Changes
