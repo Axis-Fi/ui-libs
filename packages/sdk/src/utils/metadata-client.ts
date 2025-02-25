@@ -3,7 +3,7 @@ import {
   ApplicationAccessTokenService,
 } from "@fleek-platform/sdk/browser";
 
-type MetadataClientConfig = {
+export type MetadataClientConfig = {
   fleekApplicationClientId: string;
   authAppsServiceUrl?: string;
   graphqlServiceApiUrl?: string;

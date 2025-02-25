@@ -10,7 +10,7 @@ import type {
 import { AuctionMetadataSchema } from "./core/create/schema";
 import type { CreateTRPCProxyClient } from "@trpc/client";
 import { Environment } from "@axis-finance/env";
-import { MetadataClient } from "./utils/metadata-client";
+import { MetadataClient, MetadataClientConfig } from "./utils/metadata-client";
 
 class SdkError<TInput> extends Error {
   issues?: v.BaseIssue<TInput>[] | undefined;
@@ -60,9 +60,7 @@ type OriginConfig = {
   cloak: {
     url: string;
   };
-  metadata?: {
-    fleekApplicationClientId: string;
-  };
+  metadata?: MetadataClientConfig;
   curator: {
     url: string;
   };
