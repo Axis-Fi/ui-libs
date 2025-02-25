@@ -35,7 +35,7 @@
     "@axis-finance/subgraph-client": "workspace:*",
     "@axis-finance/types": "workspace:*",
     "@openzeppelin/merkle-tree": "1.0.8",
-    "@fleek-platform/sdk": "3.6.2-rc.1",
+    "@fleek-platform/sdk": "3.6.2",
     "@trpc/client": "^10.45.1",
     "abitype": "^1.0.2",
     "valibot": "^0.42.1"
