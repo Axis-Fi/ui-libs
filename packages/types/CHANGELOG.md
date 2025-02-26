@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.11
+
+### Patch Changes
+
+- 3ee40bd: Fix auction info allowlist type
+
 ## 0.0.10
 
 ### Patch Changes
