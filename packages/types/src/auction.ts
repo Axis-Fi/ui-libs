@@ -30,7 +30,6 @@ export type GetAuctionLots = {
 };
 
 export type AuctionStatus =
-  | "registering"
   | "created"
   | "cancelled"
   | "live"
