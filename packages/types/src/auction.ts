@@ -45,7 +45,10 @@ export type Auction = BatchAuction;
 
 type AllowList = string[][] | undefined;
 
-export type AuctionInfo = Omit<BatchAuction["info"], "allowlist"> & {
+export type AuctionInfo = Omit<
+  NonNullable<BatchAuction["info"]>,
+  "allowlist"
+> & {
   allowlist: AllowList;
 };
 
