@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.12
+
+### Patch Changes
+
+- 4b30484: Use non nullable auction info type
+
 ## 0.0.11
 
 ### Patch Changes
