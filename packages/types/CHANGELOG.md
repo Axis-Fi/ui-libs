@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.13
+
+### Patch Changes
+
+- 871d729: Use subgraph allowlist format
+
 ## 0.0.12
 
 ### Patch Changes
