@@ -43,14 +43,7 @@ export type BatchAuction = BaseAuction &
 
 export type Auction = BatchAuction;
 
-type AllowList = string[][] | undefined;
-
-export type AuctionInfo = Omit<
-  NonNullable<BatchAuction["info"]>,
-  "allowlist"
-> & {
-  allowlist: AllowList;
-};
+export type AuctionInfo = BatchAuction["info"];
 
 export type AuctionLinkId =
   | "website"
