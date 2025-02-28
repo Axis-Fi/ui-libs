@@ -20,7 +20,7 @@ export type BaseAuction = {
   fdv?: number;
 
   // We remap the info array into an object, since we're only interested in the latest
-  info: AuctionInfo;
+  info?: AuctionInfo;
 };
 
 export type AuctionStatus =
@@ -38,6 +38,14 @@ export type BatchAuction = BaseAuction &
   Omit<BatchSubgraphAuction, "baseToken" | "quoteToken" | "info">;
 
 export type Auction = BatchAuction;
+
+// Auction metadata (`info`) is updatable, meaning the subgraph
+// stores info as an array of historic objects. The consumer only
+// needs to know the latest auction metadata, so we transform the
+// data to treat info as an object (latest) instead of an array.
+export type UseLaunchQueryReturn = Omit<BatchSubgraphAuction, "info"> & {
+  info?: AuctionInfo;
+};
 
 /**
  * Patched auction lots query that treats callbacks as Address

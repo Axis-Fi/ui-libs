@@ -4,20 +4,16 @@ import {
   useGetBatchAuctionLotQuery,
 } from "@axis-finance/subgraph-client";
 import { deployments } from "@axis-finance/deployments";
-import type { AuctionInfo } from "@axis-finance/types";
+import type { UseLaunchQueryReturn } from "@axis-finance/types";
 import { getLaunchId } from "../../core/utils";
 import { useSdk } from "./use-sdk";
 
 type QueryData = NonNullable<GetBatchAuctionLotQuery["batchAuctionLot"]>;
+
 type QueryOptions = Omit<
   UseQueryOptions<GetBatchAuctionLotQuery, Error, QueryData>,
   "queryKey"
 >;
-// Auction metadata (`info`) is updatable, meaning the subgraph
-// stores info as an array of historic objects. The consumer only
-// needs to know the latest auction metadata, so we transform the
-// data to treat info as an object (latest) instead of an array.
-type TransformedQueryData = Omit<QueryData, "info"> & { info?: AuctionInfo };
 
 type LaunchQueryConfig = {
   chainId: number;
@@ -29,7 +25,7 @@ export const useLaunchQuery = ({
   chainId,
   lotId,
   options,
-}: LaunchQueryConfig): UseQueryResult<TransformedQueryData, Error> => {
+}: LaunchQueryConfig): UseQueryResult<UseLaunchQueryReturn, Error> => {
   const sdk = useSdk();
   const id = getLaunchId(chainId, lotId);
   const isQueryEnabled =
