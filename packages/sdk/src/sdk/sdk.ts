@@ -326,8 +326,9 @@ class OriginSdk {
    *
    * @throws {SdkError} If the provided parameters are invalid.
    * @throws {SdkError} If the auction lot cannot be found on the specified chain.
-   * @throws {Error} If the metadata is invalid
-   * @throws {Error} If the {MetadataClient} is unable to store the data
+   * @throws {SdkError} If the auction lot doesn't have a callback address defined.
+   * @throws {Error} If the metadata is invalid.
+   * @throws {Error} If the {MetadataClient} is unable to store the data.
    *
    * @example
    * import { sdk } from "./sdk";

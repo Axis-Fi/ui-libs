@@ -8,6 +8,7 @@ import { getAuctionLot } from "../get-auction-lot";
 import { deployments } from "@axis-finance/deployments";
 import type { OriginConfig } from "../../types";
 import { UpdateAllowlistParams, UpdateAllowlistResult } from "./types";
+import { Address, isAddress } from "viem";
 
 export const getConfig = async (
   params: UpdateAllowlistParams,
@@ -23,12 +24,14 @@ export const getConfig = async (
     );
   }
 
-  const { lotId, auctionHouse, isTestnet, allowlist, callback, chainId } =
-    params;
+  const { lotId, auctionHouse, allowlist, chainId } = params;
 
   const subgraphEndpoint = subgraph
     ? subgraph[chainId].url
     : deployments[chainId].subgraphURL;
+
+  const { chain } = deployments[chainId];
+  const isTestnet = !!chain.testnet;
 
   const result = await getAuctionLot({
     endpoint: subgraphEndpoint,
@@ -39,6 +42,10 @@ export const getConfig = async (
 
   if (!auction) {
     throw new SdkError(`Auction with ${lotId} not found on ${chainId}`);
+  }
+
+  if (!isAddress(auction.callbacks)) {
+    throw new SdkError(`Provided Auction doesn't have a callback address`);
   }
 
   const metadata = { ...auction.info, allowlist };
@@ -58,7 +65,7 @@ export const getConfig = async (
   const setMerkleRootConfig = setMerkleRoot.getConfig({
     lotId,
     allowlist,
-    callback,
+    callback: auction.callbacks as Address,
   });
 
   return { registerAuctionConfig, setMerkleRootConfig };

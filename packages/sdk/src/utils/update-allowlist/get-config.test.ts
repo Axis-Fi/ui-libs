@@ -25,18 +25,17 @@ const registryAddress = deployments[base.id].registry;
 
 const mockParams = {
   lotId,
-  callback: mockAddress,
   allowlist: {
     types: ["address", "uint256"],
     values: mockAllowlist,
   },
   auctionHouse: mockAddress,
-  isTestnet: false,
   chainId: base.id,
 } satisfies UpdateAllowlistParams;
 
 const mockAuction = {
   batchAuctionLot: {
+    callbacks: mockAddress,
     info: {
       id: "auction-12341234",
     },
