@@ -4,11 +4,11 @@ import {
   useGetBatchAuctionLotQuery,
 } from "@axis-finance/subgraph-client";
 import { deployments } from "@axis-finance/deployments";
+import type { AuctionInfo } from "@axis-finance/types";
 import { getLaunchId } from "../../core/utils";
 import { useSdk } from "./use-sdk";
-import { AuctionInfo } from "@axis-finance/types";
 
-type QueryData = GetBatchAuctionLotQuery["batchAuctionLot"];
+type QueryData = NonNullable<GetBatchAuctionLotQuery["batchAuctionLot"]>;
 type QueryOptions = Omit<
   UseQueryOptions<GetBatchAuctionLotQuery, Error, QueryData>,
   "queryKey"
@@ -17,7 +17,7 @@ type QueryOptions = Omit<
 // stores info as an array of historic objects. The consumer only
 // needs to know the latest auction metadata, so we transform the
 // data to treat info as an object (latest) instead of an array.
-type TransformedDataQuery = Omit<QueryData, "info"> & { info?: AuctionInfo };
+type TransformedQueryData = Omit<QueryData, "info"> & { info?: AuctionInfo };
 
 type LaunchQueryConfig = {
   chainId: number;
@@ -29,7 +29,7 @@ export const useLaunchQuery = ({
   chainId,
   lotId,
   options,
-}: LaunchQueryConfig): UseQueryResult<TransformedDataQuery, Error> => {
+}: LaunchQueryConfig): UseQueryResult<TransformedQueryData, Error> => {
   const sdk = useSdk();
   const id = getLaunchId(chainId, lotId);
   const isQueryEnabled =
@@ -47,7 +47,7 @@ export const useLaunchQuery = ({
       enabled: isQueryEnabled,
       select: (data) => ({
         ...data.batchAuctionLot!,
-        // The GetBatchAuctionLotQuery info fragment filters on the latest
+        // The subgraph info fragment filters on the latest
         // info record, so we just need to take the first array item to
         // treat info as an object instead of an array. Consumers are
         // only interested in the latest auction metadata.

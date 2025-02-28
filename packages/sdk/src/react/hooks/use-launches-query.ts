@@ -68,7 +68,7 @@ export const useLaunchesQuery = (
         .filter(Boolean)
         .map((r) => ({
           ...r,
-          // The GetBatchAuctionLotsQuery info fragment filters on the latest
+          // The subgraph info fragment filters on the latest
           // info record, so we just need to take the first array item to
           // treat info as an object instead of an array. Consumers are
           // only interested in the latest auction metadata.

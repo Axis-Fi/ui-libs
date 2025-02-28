@@ -1,7 +1,7 @@
-import { GetAuctionLotsQuery } from "@axis-finance/subgraph-client";
+import type { GetAuctionLotsQuery } from "@axis-finance/subgraph-client";
 import { AuctionType } from "./auction-modules";
-import { Address } from "./axis-contracts";
-import { BatchSubgraphAuction } from "./subgraph-queries";
+import type { Address } from "./axis-contracts";
+import type { BatchSubgraphAuction } from "./subgraph-queries";
 import type { Token } from "./token";
 
 export type BaseAuction = {
@@ -18,6 +18,9 @@ export type BaseAuction = {
   // Used for registration launches
   registrationDeadline?: Date;
   fdv?: number;
+
+  // We remap the info array into an object, since we're only interested in the latest
+  info: AuctionInfo;
 };
 
 /** Patched auction lots query that treats callbacks as Address */
@@ -38,12 +41,12 @@ export type AuctionStatus =
   | "aborted"
   | "settled";
 
+export type AuctionInfo = NonNullable<BatchSubgraphAuction["info"]>[number];
+
 export type BatchAuction = BaseAuction &
-  Omit<BatchSubgraphAuction, "baseToken" | "quoteToken">;
+  Omit<BatchSubgraphAuction, "baseToken" | "quoteToken" | "info">;
 
 export type Auction = BatchAuction;
-
-export type AuctionInfo = NonNullable<BatchAuction["info"]>[number];
 
 export type AuctionLinkId =
   | "website"
@@ -56,7 +59,7 @@ export type AuctionLinkId =
   | "twitter"
   | "externalSite";
 
-export type AuctionLink = NonNullable<Auction["info"]>[0]["links"][number];
+export type AuctionLink = AuctionInfo["links"][number];
 
 export type AuctionFormattedInfo = {
   startDate: Date;
