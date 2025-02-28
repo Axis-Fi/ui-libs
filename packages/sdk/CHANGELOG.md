@@ -1,5 +1,16 @@
 # @axis-finance/sdk
 
+## 0.0.26
+
+### Patch Changes
+
+- 5308432: Handle optional allowlist
+- Updated dependencies [5308432]
+  - @axis-finance/subgraph-client@0.0.8
+  - @axis-finance/types@0.0.17
+  - @axis-finance/deployments@0.0.6
+  - @axis-finance/env@0.0.8
+
 ## 0.0.25
 
 ### Patch Changes
