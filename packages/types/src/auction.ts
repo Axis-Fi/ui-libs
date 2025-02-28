@@ -43,7 +43,7 @@ export type BatchAuction = BaseAuction &
 
 export type Auction = BatchAuction;
 
-export type AuctionInfo = BatchAuction["info"];
+export type AuctionInfo = NonNullable<BatchAuction["info"]>[number];
 
 export type AuctionLinkId =
   | "website"
@@ -56,7 +56,7 @@ export type AuctionLinkId =
   | "twitter"
   | "externalSite";
 
-export type AuctionLink = NonNullable<Auction["info"]>["links"][number];
+export type AuctionLink = NonNullable<Auction["info"]>[0]["links"][number];
 
 export type AuctionFormattedInfo = {
   startDate: Date;

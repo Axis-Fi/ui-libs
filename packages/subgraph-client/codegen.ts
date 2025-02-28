@@ -1,7 +1,7 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const ENDPOINT =
-  "https://api.goldsky.com/api/public/project_clu16lu24lqh201x9f0qh135t/subgraphs/axis-origin-base-sepolia/1.0.4/gn";
+  "https://api.goldsky.com/api/public/project_clu16lu24lqh201x9f0qh135t/subgraphs/axis-origin-base-sepolia/1.0.5/gn";
 
 const config: CodegenConfig = {
   schema: ENDPOINT,
