@@ -1,5 +1,15 @@
 # @axis-finance/sdk
 
+## 0.0.25
+
+### Patch Changes
+
+- b0e1e10: Fix typing for auction list auction
+- Updated dependencies [b0e1e10]
+  - @axis-finance/types@0.0.16
+  - @axis-finance/deployments@0.0.6
+  - @axis-finance/env@0.0.8
+
 ## 0.0.24
 
 ### Patch Changes
