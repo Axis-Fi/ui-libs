@@ -1,5 +1,15 @@
 # @axis-finance/sdk
 
+## 0.0.24
+
+### Patch Changes
+
+- f274afa: Handle info array in token launches query
+- Updated dependencies [f274afa]
+  - @axis-finance/types@0.0.15
+  - @axis-finance/deployments@0.0.6
+  - @axis-finance/env@0.0.8
+
 ## 0.0.23
 
 ### Patch Changes

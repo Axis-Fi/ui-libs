@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.15
+
+### Patch Changes
+
+- f274afa: Handle info array in token launches query
+
 ## 0.0.14
 
 ### Patch Changes
