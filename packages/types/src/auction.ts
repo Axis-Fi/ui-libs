@@ -23,15 +23,6 @@ export type BaseAuction = {
   info: AuctionInfo;
 };
 
-/** Patched auction lots query that treats callbacks as Address */
-export type GetAuctionLots = {
-  batchAuctionLots: Array<
-    GetAuctionLotsQuery["batchAuctionLots"][0] & {
-      callbacks: Address;
-    }
-  >;
-};
-
 export type AuctionStatus =
   | "created"
   | "cancelled"
@@ -47,6 +38,21 @@ export type BatchAuction = BaseAuction &
   Omit<BatchSubgraphAuction, "baseToken" | "quoteToken" | "info">;
 
 export type Auction = BatchAuction;
+
+/**
+ * Patched auction lots query that treats callbacks as Address
+ * and transforms the info array into an object, since we're only interested in the latest
+ * and removes the allowlist from the info object, as it could be too data heavy
+ * to send to the consumer.
+ **/
+export type AuctionListItem = GetAuctionLotsQuery["batchAuctionLots"][0] & {
+  callbacks: Address;
+  info: Omit<AuctionInfo, "allowlist">;
+};
+
+export type AuctionList = {
+  batchAuctionLots: AuctionListItem[];
+};
 
 export type AuctionLinkId =
   | "website"

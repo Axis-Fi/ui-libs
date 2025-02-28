@@ -6,7 +6,7 @@ import {
   testnetDeployments,
 } from "@axis-finance/deployments";
 import { GetAuctionLotsDocument, request } from "@axis-finance/subgraph-client";
-import type { GetAuctionLots } from "@axis-finance/types";
+import type { AuctionList } from "@axis-finance/types";
 import { useSdk } from "./use-sdk";
 
 const defaultSubgraphUrls = (isTestnet?: boolean) =>
@@ -56,7 +56,7 @@ export const useLaunchesQuery = (
     queries: subgraphUrls.map(([chainId, subgraphUrl]: [number, string]) => ({
       queryKey: queryKeyFn?.(chainId) ?? [subgraphUrl],
       queryFn: () =>
-        request<GetAuctionLots>(subgraphUrl, document, {
+        request<AuctionList>(subgraphUrl, document, {
           ...variables,
           chainId,
         }),
