@@ -1,5 +1,15 @@
 # @axis-finance/sdk
 
+## 0.0.27
+
+### Patch Changes
+
+- 4d5e58d: Export useLaunchQuery return type
+- Updated dependencies [4d5e58d]
+  - @axis-finance/types@0.0.18
+  - @axis-finance/deployments@0.0.6
+  - @axis-finance/env@0.0.8
+
 ## 0.0.26
 
 ### Patch Changes
