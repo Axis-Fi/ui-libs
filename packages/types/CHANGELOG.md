@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.16
+
+### Patch Changes
+
+- b0e1e10: Fix typing for auction list auction
+
 ## 0.0.15
 
 ### Patch Changes
