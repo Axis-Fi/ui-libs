@@ -1,5 +1,13 @@
 # @axis-finance/types
 
+## 0.0.17
+
+### Patch Changes
+
+- 5308432: Handle optional allowlist
+- Updated dependencies [5308432]
+  - @axis-finance/subgraph-client@0.0.8
+
 ## 0.0.16
 
 ### Patch Changes

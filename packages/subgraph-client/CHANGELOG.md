@@ -1,5 +1,11 @@
 # @axis-finance/subgraph-client
 
+## 0.0.8
+
+### Patch Changes
+
+- 5308432: Handle optional allowlist
+
 ## 0.0.7
 
 ### Patch Changes
