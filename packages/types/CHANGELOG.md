@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.18
+
+### Patch Changes
+
+- 4d5e58d: Export useLaunchQuery return type
+
 ## 0.0.17
 
 ### Patch Changes
