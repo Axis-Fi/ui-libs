@@ -35,14 +35,6 @@ const mockParams = {
   chainId: base.id,
 } satisfies UpdateAllowlistParams;
 
-// vi.mock("../metadata-client.ts", () => {
-//   return {
-//     MetadataClient: vi.fn().mockImplementation(() => ({
-//       save: vi.fn(() => "mocked-cid"),
-//     })),
-//   };
-// });
-
 const mockAuction = {
   batchAuctionLot: {
     info: {
@@ -80,5 +72,22 @@ describe("getConfig()", () => {
       functionName: "setMerkleRoot",
       args: [BigInt(mockParams.lotId), mockMerkleRootResult],
     });
+  });
+
+  it("throws an error if invalid params are supplied", async () => {
+    const invalidParams = { ...mockParams, lotId: "invalid" };
+    const metadataClient = new MetadataClient({
+      fleekApplicationClientId: "1337",
+    });
+
+    const result = getConfig(
+      // @ts-expect-error - deliberately testing invalid params
+      invalidParams,
+      metadataClient,
+    );
+
+    expect(result).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[OriginSdkError: Invalid parameters supplied to getConfig()]`,
+    );
   });
 });
