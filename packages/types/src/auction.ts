@@ -45,13 +45,16 @@ export type Auction = BatchAuction;
  * and removes the allowlist from the info object, as it could be too data heavy
  * to send to the consumer.
  **/
-export type AuctionListItem = GetAuctionLotsQuery["batchAuctionLots"][0] & {
+export type AuctionListItem = Omit<
+  GetAuctionLotsQuery["batchAuctionLots"][number],
+  "info" | "callbacks"
+> & {
   callbacks: Address;
-  info: Omit<AuctionInfo, "allowlist">;
-};
-
-export type AuctionList = {
-  batchAuctionLots: AuctionListItem[];
+  info?:
+    | NonNullable<
+        GetAuctionLotsQuery["batchAuctionLots"][number]["info"]
+      >[number]
+    | null;
 };
 
 export type AuctionLinkId =

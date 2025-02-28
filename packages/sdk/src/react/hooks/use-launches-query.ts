@@ -5,8 +5,12 @@ import {
   mainnetDeployments,
   testnetDeployments,
 } from "@axis-finance/deployments";
-import { GetAuctionLotsDocument, request } from "@axis-finance/subgraph-client";
-import type { AuctionList } from "@axis-finance/types";
+import {
+  GetAuctionLotsDocument,
+  GetAuctionLotsQuery,
+  request,
+} from "@axis-finance/subgraph-client";
+import type { Address, AuctionListItem } from "@axis-finance/types";
 import { useSdk } from "./use-sdk";
 
 const defaultSubgraphUrls = (isTestnet?: boolean) =>
@@ -56,7 +60,7 @@ export const useLaunchesQuery = (
     queries: subgraphUrls.map(([chainId, subgraphUrl]: [number, string]) => ({
       queryKey: queryKeyFn?.(chainId) ?? [subgraphUrl],
       queryFn: () =>
-        request<AuctionList>(subgraphUrl, document, {
+        request<GetAuctionLotsQuery>(subgraphUrl, document, {
           ...variables,
           chainId,
         }),
@@ -64,16 +68,19 @@ export const useLaunchesQuery = (
     combine: (results) => {
       const data = results
         .filter((r) => r.data?.batchAuctionLots)
-        .flatMap((r) => r.data?.batchAuctionLots)
-        .filter(Boolean)
-        .map((r) => ({
-          ...r,
-          // The subgraph info fragment filters on the latest
-          // info record, so we just need to take the first array item to
-          // treat info as an object instead of an array. Consumers are
-          // only interested in the latest auction metadata.
-          info: r?.info?.[0],
-        }));
+        .flatMap((r) => r.data!.batchAuctionLots)
+        .map(
+          (r) =>
+            ({
+              ...r,
+              callbacks: r?.callbacks as Address,
+              // The subgraph info fragment filters on the latest
+              // info record, so we just need to take the first array item to
+              // treat info as an object instead of an array. Consumers are
+              // only interested in the latest auction metadata.
+              info: r?.info?.[0],
+            }) satisfies AuctionListItem,
+        );
 
       return {
         data,

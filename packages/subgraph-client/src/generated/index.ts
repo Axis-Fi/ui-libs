@@ -2729,7 +2729,7 @@ export enum BatchAuctionCurated_OrderBy {
 }
 
 export type BatchAuctionInfo = {
-  allowlist: Array<BatchAuctionInfoAllowlistEntry>;
+  allowlist?: Maybe<Array<BatchAuctionInfoAllowlistEntry>>;
   createdAt: Scalars["BigInt"]["output"];
   description?: Maybe<Scalars["String"]["output"]>;
   hash: Scalars["String"]["output"];
@@ -7436,7 +7436,7 @@ export type GetBatchAuctionLotQuery = {
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
-      allowlist: Array<{ values: Array<string> }>;
+      allowlist?: Array<{ values: Array<string> }> | null;
       links: Array<{ linkId: string; url: string }>;
     }> | null;
     aborted?: { date: string } | null;
@@ -7554,7 +7554,7 @@ export type GetBatchAuctionLotsByBaseTokenAddressQuery = {
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
-      allowlist: Array<{ values: Array<string> }>;
+      allowlist?: Array<{ values: Array<string> }> | null;
       links: Array<{ linkId: string; url: string }>;
     }> | null;
     aborted?: { date: string } | null;
