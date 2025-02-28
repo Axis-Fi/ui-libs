@@ -6,12 +6,18 @@ import {
 import { deployments } from "@axis-finance/deployments";
 import { getLaunchId } from "../../core/utils";
 import { useSdk } from "./use-sdk";
+import { AuctionInfo } from "@axis-finance/types";
 
 type QueryData = GetBatchAuctionLotQuery["batchAuctionLot"];
 type QueryOptions = Omit<
   UseQueryOptions<GetBatchAuctionLotQuery, Error, QueryData>,
   "queryKey"
 >;
+// Auction metadata (`info`) is updatable, meaning the subgraph
+// stores info as an array of historic objects. The consumer only
+// needs to know the latest auction metadata, so we transform the
+// data to treat info as an object (latest) instead of an array.
+type TransformedDataQuery = Omit<QueryData, "info"> & { info?: AuctionInfo };
 
 type LaunchQueryConfig = {
   chainId: number;
@@ -23,7 +29,7 @@ export const useLaunchQuery = ({
   chainId,
   lotId,
   options,
-}: LaunchQueryConfig): UseQueryResult<QueryData, Error> => {
+}: LaunchQueryConfig): UseQueryResult<TransformedDataQuery, Error> => {
   const sdk = useSdk();
   const id = getLaunchId(chainId, lotId);
   const isQueryEnabled =
@@ -39,7 +45,14 @@ export const useLaunchQuery = ({
     { id: id! },
     {
       enabled: isQueryEnabled,
-      select: (data) => data.batchAuctionLot,
+      select: (data) => ({
+        ...data.batchAuctionLot!,
+        // The GetBatchAuctionLotQuery info fragment filters on the latest
+        // info record, so we just need to take the first array item to
+        // treat info as an object instead of an array. Consumers are
+        // only interested in the latest auction metadata.
+        info: data.batchAuctionLot?.info?.[0],
+      }),
     },
   );
 };

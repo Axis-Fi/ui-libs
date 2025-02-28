@@ -15,26 +15,24 @@ const defaultSubgraphUrls = (isTestnet?: boolean) =>
     d.subgraphURL,
   ]) satisfies [number, string][];
 
-type LaunchesQueryConfig<T> = {
+type LaunchesQueryConfig = {
   chainIds?: number[];
   document: typeof GetAuctionLotsDocument;
   variables?: Variables;
-  fields: (keyof T)[];
   queryKeyFn?: (chainId: number) => QueryKey;
   isTestnet?: boolean;
 };
 
-const defaultQueryConfig: LaunchesQueryConfig<GetAuctionLots> = {
+const defaultQueryConfig: LaunchesQueryConfig = {
   document: GetAuctionLotsDocument,
-  fields: ["batchAuctionLots"],
   variables: {},
   queryKeyFn: (chainId: number) => ["launches", chainId] as const,
 };
 
-export const useLaunchesQuery = <T>(
-  queryConfig?: Partial<LaunchesQueryConfig<T>>,
+export const useLaunchesQuery = (
+  queryConfig?: Partial<LaunchesQueryConfig>,
 ) => {
-  const { chainIds, document, fields, variables, queryKeyFn, isTestnet } = {
+  const { chainIds, document, variables, queryKeyFn, isTestnet } = {
     ...defaultQueryConfig,
     ...queryConfig,
   };
@@ -58,18 +56,24 @@ export const useLaunchesQuery = <T>(
     queries: subgraphUrls.map(([chainId, subgraphUrl]: [number, string]) => ({
       queryKey: queryKeyFn?.(chainId) ?? [subgraphUrl],
       queryFn: () =>
-        request<T>(subgraphUrl, document, {
+        request<GetAuctionLots>(subgraphUrl, document, {
           ...variables,
           chainId,
         }),
     })),
     combine: (results) => {
       const data = results
-        .filter((r) => r?.data != null)
-        .flatMap((r) =>
-          fields.flatMap((field) => r.data?.[field as keyof T] ?? []).flat(),
-        )
-        .filter(Boolean);
+        .filter((r) => r.data?.batchAuctionLots)
+        .flatMap((r) => r.data?.batchAuctionLots)
+        .filter(Boolean)
+        .map((r) => ({
+          ...r,
+          // The GetBatchAuctionLotsQuery info fragment filters on the latest
+          // info record, so we just need to take the first array item to
+          // treat info as an object instead of an array. Consumers are
+          // only interested in the latest auction metadata.
+          info: r?.info?.[0],
+        }));
 
       return {
         data,

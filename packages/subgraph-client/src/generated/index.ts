@@ -2730,6 +2730,7 @@ export enum BatchAuctionCurated_OrderBy {
 
 export type BatchAuctionInfo = {
   allowlist: Array<BatchAuctionInfoAllowlistEntry>;
+  createdAt: Scalars["BigInt"]["output"];
   description?: Maybe<Scalars["String"]["output"]>;
   hash: Scalars["String"]["output"];
   id: Scalars["ID"]["output"];
@@ -2806,6 +2807,7 @@ export type BatchAuctionInfoAllowlistEntry_Filter = {
 
 export enum BatchAuctionInfoAllowlistEntry_OrderBy {
   auctionInfo = "auctionInfo",
+  auctionInfo__createdAt = "auctionInfo__createdAt",
   auctionInfo__description = "auctionInfo__description",
   auctionInfo__hash = "auctionInfo__hash",
   auctionInfo__id = "auctionInfo__id",
@@ -2901,6 +2903,7 @@ export type BatchAuctionInfoLink_Filter = {
 
 export enum BatchAuctionInfoLink_OrderBy {
   auctionInfo = "auctionInfo",
+  auctionInfo__createdAt = "auctionInfo__createdAt",
   auctionInfo__description = "auctionInfo__description",
   auctionInfo__hash = "auctionInfo__hash",
   auctionInfo__id = "auctionInfo__id",
@@ -2917,6 +2920,14 @@ export type BatchAuctionInfo_Filter = {
   _change_block?: InputMaybe<BlockChangedFilter>;
   allowlist_?: InputMaybe<BatchAuctionInfoAllowlistEntry_Filter>;
   and?: InputMaybe<Array<InputMaybe<BatchAuctionInfo_Filter>>>;
+  createdAt?: InputMaybe<Scalars["BigInt"]["input"]>;
+  createdAt_gt?: InputMaybe<Scalars["BigInt"]["input"]>;
+  createdAt_gte?: InputMaybe<Scalars["BigInt"]["input"]>;
+  createdAt_in?: InputMaybe<Array<Scalars["BigInt"]["input"]>>;
+  createdAt_lt?: InputMaybe<Scalars["BigInt"]["input"]>;
+  createdAt_lte?: InputMaybe<Scalars["BigInt"]["input"]>;
+  createdAt_not?: InputMaybe<Scalars["BigInt"]["input"]>;
+  createdAt_not_in?: InputMaybe<Array<Scalars["BigInt"]["input"]>>;
   description?: InputMaybe<Scalars["String"]["input"]>;
   description_contains?: InputMaybe<Scalars["String"]["input"]>;
   description_contains_nocase?: InputMaybe<Scalars["String"]["input"]>;
@@ -3052,6 +3063,7 @@ export type BatchAuctionInfo_Filter = {
 
 export enum BatchAuctionInfo_OrderBy {
   Allowlist = "allowlist",
+  createdAt = "createdAt",
   Description = "description",
   Hash = "hash",
   Id = "id",
@@ -3132,7 +3144,7 @@ export type BatchAuctionLot = {
   encryptedMarginalPrice?: Maybe<BatchEncryptedMarginalPriceLot>;
   fixedPrice?: Maybe<BatchFixedPriceLot>;
   id: Scalars["String"]["output"];
-  info?: Maybe<BatchAuctionInfo>;
+  info?: Maybe<Array<BatchAuctionInfo>>;
   infoHash: Scalars["String"]["output"];
   lastUpdatedBlockNumber: Scalars["BigInt"]["output"];
   lastUpdatedBlockTimestamp: Scalars["BigInt"]["output"];
@@ -3190,6 +3202,14 @@ export type BatchAuctionLotBidsRefundedArgs = {
   orderDirection?: InputMaybe<OrderDirection>;
   skip?: InputMaybe<Scalars["Int"]["input"]>;
   where?: InputMaybe<BatchBidRefunded_Filter>;
+};
+
+export type BatchAuctionLotInfoArgs = {
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  orderBy?: InputMaybe<BatchAuctionInfo_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<BatchAuctionInfo_Filter>;
 };
 
 export type BatchAuctionLot_Filter = {
@@ -3689,12 +3709,6 @@ export enum BatchAuctionLot_OrderBy {
   Id = "id",
   Info = "info",
   infoHash = "infoHash",
-  Info__description = "info__description",
-  Info__hash = "info__hash",
-  Info__id = "info__id",
-  Info__key = "info__key",
-  Info__name = "info__name",
-  Info__tagline = "info__tagline",
   lastUpdatedBlockNumber = "lastUpdatedBlockNumber",
   lastUpdatedBlockTimestamp = "lastUpdatedBlockTimestamp",
   lastUpdatedDate = "lastUpdatedDate",
@@ -7184,13 +7198,13 @@ export type BatchCommonFieldsFragment = {
   lastUpdatedTransactionHash: string;
   aborted?: { date: string } | null;
   cancelled?: { date: string } | null;
-  info?: {
+  info?: Array<{
     key?: string | null;
     name?: string | null;
     description?: string | null;
     tagline?: string | null;
     links: Array<{ linkId: string; url: string }>;
-  } | null;
+  }> | null;
   linearVesting?: {
     id: string;
     startDate: string;
@@ -7302,13 +7316,13 @@ export type GetAuctionLotsQuery = {
     maxBidId: string;
     aborted?: { date: string } | null;
     cancelled?: { date: string } | null;
-    info?: {
+    info?: Array<{
       key?: string | null;
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
       links: Array<{ linkId: string; url: string }>;
-    } | null;
+    }> | null;
     linearVesting?: {
       id: string;
       startDate: string;
@@ -7417,14 +7431,14 @@ export type GetBatchAuctionLotQuery = {
     lastUpdatedDate: string;
     lastUpdatedTransactionHash: string;
     maxBidId: string;
-    info?: {
+    info?: Array<{
       key?: string | null;
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
       allowlist: Array<{ values: Array<string> }>;
       links: Array<{ linkId: string; url: string }>;
-    } | null;
+    }> | null;
     aborted?: { date: string } | null;
     cancelled?: { date: string } | null;
     linearVesting?: {
@@ -7535,14 +7549,14 @@ export type GetBatchAuctionLotsByBaseTokenAddressQuery = {
     lastUpdatedDate: string;
     lastUpdatedTransactionHash: string;
     maxBidId: string;
-    info?: {
+    info?: Array<{
       key?: string | null;
       name?: string | null;
       description?: string | null;
       tagline?: string | null;
       allowlist: Array<{ values: Array<string> }>;
       links: Array<{ linkId: string; url: string }>;
-    } | null;
+    }> | null;
     aborted?: { date: string } | null;
     cancelled?: { date: string } | null;
     linearVesting?: {
@@ -7626,16 +7640,6 @@ export type GetInstalledModulesQuery = {
     address: string;
     auctionHouse: string;
   }>;
-};
-
-export type GetAuctionAllowlistQueryVariables = Exact<{
-  id: Scalars["ID"]["input"];
-}>;
-
-export type GetAuctionAllowlistQuery = {
-  batchAuctionLot?: {
-    info?: { allowlist: Array<{ values: Array<string> }> } | null;
-  } | null;
 };
 
 export const BatchCommonFieldsFragmentDoc = `
@@ -7943,50 +7947,6 @@ export const useGetInstalledModulesQuery = <
       dataSource.endpoint,
       dataSource.fetchParams || {},
       GetInstalledModulesDocument,
-      variables,
-    ),
-    ...options,
-  });
-};
-
-export const GetAuctionAllowlistDocument = `
-    query getAuctionAllowlist($id: ID!) {
-  batchAuctionLot(id: $id) {
-    info {
-      allowlist {
-        values
-      }
-    }
-  }
-}
-    `;
-
-export const useGetAuctionAllowlistQuery = <
-  TData = GetAuctionAllowlistQuery,
-  TError = unknown,
->(
-  dataSource: { endpoint: string; fetchParams?: RequestInit },
-  variables: GetAuctionAllowlistQueryVariables,
-  options?: Omit<
-    UseQueryOptions<GetAuctionAllowlistQuery, TError, TData>,
-    "queryKey"
-  > & {
-    queryKey?: UseQueryOptions<
-      GetAuctionAllowlistQuery,
-      TError,
-      TData
-    >["queryKey"];
-  },
-) => {
-  return useQuery<GetAuctionAllowlistQuery, TError, TData>({
-    queryKey: ["getAuctionAllowlist", variables],
-    queryFn: fetcher<
-      GetAuctionAllowlistQuery,
-      GetAuctionAllowlistQueryVariables
-    >(
-      dataSource.endpoint,
-      dataSource.fetchParams || {},
-      GetAuctionAllowlistDocument,
       variables,
     ),
     ...options,

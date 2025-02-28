@@ -172,13 +172,3 @@ query getInstalledModules {
     auctionHouse
   }
 }
-
-query getAuctionAllowlist($id: ID!) {
-  batchAuctionLot(id: $id) {
-    info {
-      allowlist {
-        values
-      }
-    }
-  }
-}
