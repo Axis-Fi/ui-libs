@@ -1,5 +1,13 @@
 # @axis-finance/types
 
+## 0.0.14
+
+### Patch Changes
+
+- f459794: Handle subgraph auction info array, convert it to an object as consumers expect
+- Updated dependencies [f459794]
+  - @axis-finance/subgraph-client@0.0.7
+
 ## 0.0.13
 
 ### Patch Changes

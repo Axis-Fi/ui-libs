@@ -1,5 +1,11 @@
 # @axis-finance/cloak
 
+## 0.0.8
+
+### Patch Changes
+
+- @axis-finance/env@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes
