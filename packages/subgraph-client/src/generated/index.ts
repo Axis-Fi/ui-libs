@@ -506,7 +506,7 @@ export enum AtomicAuctionCurated_OrderBy {
 }
 
 export type AtomicAuctionInfo = {
-  allowlist: Array<AtomicAuctionInfoAllowlistEntry>;
+  allowlist?: Maybe<Array<AtomicAuctionInfoAllowlistEntry>>;
   description?: Maybe<Scalars["String"]["output"]>;
   hash: Scalars["String"]["output"];
   id: Scalars["ID"]["output"];
