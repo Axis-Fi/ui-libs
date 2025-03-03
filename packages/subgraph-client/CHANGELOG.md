@@ -1,5 +1,11 @@
 # @axis-finance/subgraph-client
 
+## 0.0.9
+
+### Patch Changes
+
+- 9dc4691: Allowlist optional
+
 ## 0.0.8
 
 ### Patch Changes
