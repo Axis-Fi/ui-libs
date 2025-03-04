@@ -1,5 +1,11 @@
 # @axis-finance/subgraph-client
 
+## 0.0.10
+
+### Patch Changes
+
+- de038f6: Query latest info record
+
 ## 0.0.9
 
 ### Patch Changes
