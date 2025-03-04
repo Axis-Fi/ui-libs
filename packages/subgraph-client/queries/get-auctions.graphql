@@ -15,7 +15,7 @@ fragment BatchCommonFields on BatchAuctionLot {
   createdTransactionHash
   capacityInitial
   start
-  info {
+  info(orderBy: createdAt, orderDirection: desc, first: 1) {
     key
     name
     description
@@ -145,7 +145,7 @@ query getBatchAuctionLot($id: ID!) {
   batchAuctionLot(id: $id) {
     ...BatchCommonFields
     ...BatchAuctionFields
-    info {
+    info(orderBy: createdAt, orderDirection: desc, first: 1) {
       allowlist {
         values
       }
@@ -157,7 +157,7 @@ query getBatchAuctionLotsByBaseTokenAddress($baseTokenAddress: String!) {
   batchAuctionLots(where: { baseToken: $baseTokenAddress }) {
     ...BatchCommonFields
     ...BatchAuctionFields
-    info {
+    info(orderBy: createdAt, orderDirection: desc, first: 1) {
       allowlist {
         values
       }

@@ -7660,7 +7660,7 @@ export const BatchCommonFieldsFragmentDoc = `
   createdTransactionHash
   capacityInitial
   start
-  info {
+  info(orderBy: createdAt, orderDirection: desc, first: 1) {
     key
     name
     description
@@ -7822,7 +7822,7 @@ export const GetBatchAuctionLotDocument = `
   batchAuctionLot(id: $id) {
     ...BatchCommonFields
     ...BatchAuctionFields
-    info {
+    info(orderBy: createdAt, orderDirection: desc, first: 1) {
       allowlist {
         values
       }
@@ -7866,7 +7866,7 @@ export const GetBatchAuctionLotsByBaseTokenAddressDocument = `
   batchAuctionLots(where: {baseToken: $baseTokenAddress}) {
     ...BatchCommonFields
     ...BatchAuctionFields
-    info {
+    info(orderBy: createdAt, orderDirection: desc, first: 1) {
       allowlist {
         values
       }
