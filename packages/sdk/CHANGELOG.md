@@ -1,5 +1,15 @@
 # @axis-finance/sdk
 
+## 0.0.29
+
+### Patch Changes
+
+- Updated dependencies [de038f6]
+  - @axis-finance/subgraph-client@0.0.10
+  - @axis-finance/types@0.0.20
+  - @axis-finance/deployments@0.0.6
+  - @axis-finance/env@0.0.8
+
 ## 0.0.28
 
 ### Patch Changes
