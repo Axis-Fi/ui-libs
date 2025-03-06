@@ -1,0 +1,32 @@
+{
+  "name": "@axis-finance/auto-signer-provider",
+  "type": "module",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@axis-finance/typescript-config": "workspace:*",
+    "@axis-finance/eslint-config": "workspace:*",
+    "@axis-finance/tsup-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.4",
+    "viem": "^2.17.3"
+  },
+  "scripts": {
+    "build": "tsup"
+  }
+}
