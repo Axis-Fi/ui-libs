@@ -15,6 +15,7 @@ import * as periphery from "../periphery";
 import * as registry from "../registry";
 import {
   MetadataClient,
+  SdkError,
   type CuratorClient,
   type CuratorRouter,
   type OriginConfig,
@@ -48,6 +49,8 @@ import type {
   RegisterAuctionParams,
   RegisterAuctionConfig,
 } from "../registry";
+import { updateAllowlist } from "../utils";
+import type { UpdateAllowlistParams } from "../utils";
 
 const defaultConfig: OriginConfig = {
   environment: Environment.PRODUCTION,
@@ -307,6 +310,61 @@ class OriginSdk {
 
   registerAuction(params: RegisterAuctionParams): RegisterAuctionConfig {
     return this.registry.registerAuction.getConfig(params);
+  }
+
+  /**
+   * Generates the contract configurations required for updating the allowlist of an auction,
+   * which involves storing the new allowlist offchain and calculating the merkle root
+   *
+   * This function validates the provided parameters, fetches auction metadata, updates the allowlist,
+   * and stores the new metadata on IPFS.
+   *
+   * @param {UpdateAllowlistParams} params - The parameters required for updating the allowlist.
+   * @returns {Promise<Array[RegisterConfig, SetMerkleRootConfig]>} A promise that resolves to an array containing contract configurations:
+   *                           - `RegisterConfig`: Configuration for registering auction metadata.
+   *                           - `SetMerkleRootConfig`: Configuration for updating the Merkle root of the allowlist.
+   *
+   * @throws {SdkError} If the provided parameters are invalid.
+   * @throws {SdkError} If the auction lot cannot be found on the specified chain.
+   * @throws {SdkError} If the auction lot doesn't have a callback address defined.
+   * @throws {Error} If the metadata is invalid.
+   * @throws {Error} If the {MetadataClient} is unable to store the data.
+   *
+   * @example
+   * import { sdk } from "./sdk";
+   *
+   * try {
+   *   const config = await sdk.updateAllowlist({
+   *     id: "auction-123",
+   *     lotId: 1,
+   *     auctionHouse: "0x123456789",
+   *     isTestnet: true,
+   *     allowlist: ["0xabc..."],
+   *     callback: "0x987654321"
+   *     chainId: 1
+   *   }, metadataClient);
+   *
+   *   console.log(config);
+   * } catch (error) {
+   *   if (error instanceof SdkError) {
+   *     console.error(error.message, error.issues);
+   *   } else {
+   *     console.error("Unexpected error:", error);
+   *   }
+   * }
+   */
+  async updateAllowlist(params: UpdateAllowlistParams) {
+    if (!this.metadataClient) {
+      throw new SdkError(
+        "Unable to use updateAllowlist due to unexisting MetadataClient",
+      );
+    }
+
+    return updateAllowlist.getConfig(
+      params,
+      this.metadataClient,
+      this.config.subgraph,
+    );
   }
 }
 
