@@ -7,11 +7,11 @@ export default {
   },
   testing: {
     description: "Testing",
-    url: "https://ipfs-api-staging.onrender.com",
+    url: "https://ui-libs-staging.up.railway.app",
   },
   staging: {
     description: "Staging",
-    url: "https://ipfs-api-staging.onrender.com",
+    url: "https://ui-libs-staging.up.railway.app",
   },
   production: {
     description: "Production",
