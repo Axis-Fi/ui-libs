@@ -1,3 +1,5 @@
+console.log("Render test");
+
 import express from "express";
 import passport from "passport";
 import session from "express-session";
