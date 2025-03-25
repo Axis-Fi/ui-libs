@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.9
+
+### Patch Changes
+
+- 8596cd7: Sync subgraphs to 1.0.6 on alchemy
+
 ## 0.0.8
 
 ### Patch Changes
