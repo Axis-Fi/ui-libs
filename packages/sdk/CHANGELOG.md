@@ -1,5 +1,14 @@
 # @axis-finance/sdk
 
+## 0.0.33
+
+### Patch Changes
+
+- Updated dependencies [bdfe064]
+  - @axis-finance/deployments@0.0.8
+  - @axis-finance/env@0.0.12
+  - @axis-finance/cloak@0.0.12
+
 ## 0.0.32
 
 ### Patch Changes
