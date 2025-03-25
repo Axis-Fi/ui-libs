@@ -7,14 +7,14 @@ export default {
   },
   testing: {
     description: "Testing",
-    url: "https://ui-libs-staging.up.railway.app",
+    url: "https://curator-api-staging.up.railway.app",
   },
   staging: {
     description: "Staging",
-    url: "https://ui-libs-staging.up.railway.app",
+    url: "https://curator-api-staging.up.railway.app",
   },
   production: {
     description: "Production",
-    url: "https://axisfi-ipfs-api.onrender.com",
+    url: "https://curator-api-production.up.railway.app",
   },
 } as Record<Environment, { description: string; url: string }>;
