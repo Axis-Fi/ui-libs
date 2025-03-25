@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.8
+
+### Patch Changes
+
+- bdfe064: Export sepolia and mainnet network config
+
 ## 0.0.7
 
 ### Patch Changes
