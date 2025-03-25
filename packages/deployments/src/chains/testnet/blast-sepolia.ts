@@ -10,7 +10,7 @@ const config: AxisDeploymentConfig = {
   chain: blastSepolia,
   chainIconUrl: "/blast-logo.png",
   subgraphURL:
-    "https://api.goldsky.com/api/public/project_clu16lu24lqh201x9f0qh135t/subgraphs/axis-origin-blast-sepolia/<VERSION>/gn",
+    "https://subgraph.satsuma-prod.com/44c4cc082f74/spaces-team/axis-origin-blast-sepolia/version/v<VERSION>/api",
   rpcURL:
     "https://blast-sepolia.g.alchemy.com/v2/h6OEviwRZGmTSXHYPRmMquo5u-YoWLeY",
   wrapperContract: "0x4200000000000000000000000000000000000023",

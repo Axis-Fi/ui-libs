@@ -10,7 +10,7 @@ const config: AxisDeploymentConfig = {
   chain: mantle,
   chainIconUrl: "/mantle-logo.svg",
   subgraphURL:
-    "https://api.goldsky.com/api/public/project_clu16lu24lqh201x9f0qh135t/subgraphs/axis-origin-mantle/<VERSION>/gn",
+    "https://subgraph.satsuma-prod.com/44c4cc082f74/spaces-team/axis-origin-mantle/version/v<VERSION>/api",
   rpcURL:
     "https://mantle-mainnet.g.alchemy.com/v2/h6OEviwRZGmTSXHYPRmMquo5u-YoWLeY",
   wrapperContract: "0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8",
