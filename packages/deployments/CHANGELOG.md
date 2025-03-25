@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.7
+
+### Patch Changes
+
+- 2632ae6: Add support for mainnet and sepolia deployments
+
 ## 0.0.6
 
 ### Patch Changes
