@@ -1,5 +1,12 @@
 # @axis-finance/cloak
 
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [40b5bd4]
+  - @axis-finance/env@0.0.10
+
 ## 0.0.9
 
 ### Patch Changes

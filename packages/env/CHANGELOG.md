@@ -1,5 +1,11 @@
 # @axis-finance/env
 
+## 0.0.10
+
+### Patch Changes
+
+- 40b5bd4: Migrate from Render to Railway because Render infra is failing us
+
 ## 0.0.9
 
 ### Patch Changes
