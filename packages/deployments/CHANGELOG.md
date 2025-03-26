@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.10
+
+### Patch Changes
+
+- fbe8b08: Rename blast chain name to match alchemy
+
 ## 0.0.9
 
 ### Patch Changes
