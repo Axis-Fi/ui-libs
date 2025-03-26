@@ -6,7 +6,7 @@ import periphery from "../../axis-periphery/.blast.json";
 import { extractAddresses, extractCallbacks } from "../helpers";
 
 const config: AxisDeploymentConfig = {
-  name: "blast",
+  name: "blast-mainnet",
   chain: blast,
   chainIconUrl: "/blast-logo.png",
   subgraphURL:
