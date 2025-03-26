@@ -1,5 +1,12 @@
 # @axis-finance/env
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [fbe8b08]
+  - @axis-finance/deployments@0.0.10
+
 ## 0.0.13
 
 ### Patch Changes
