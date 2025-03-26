@@ -1,5 +1,11 @@
 # @axis-finance/sdk
 
+## 0.0.36
+
+### Patch Changes
+
+- e60cb60: Use chain name from subgraph for subgraph queries
+
 ## 0.0.35
 
 ### Patch Changes
