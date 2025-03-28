@@ -16,7 +16,7 @@ const config: AxisDeploymentConfig = {
   tokenList: [
     {
       ...usdc,
-      address: "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      address: "0xf8543066281b44d909530c9b9fb6ca8f17404caf",
       decimals: 18,
     },
     {
