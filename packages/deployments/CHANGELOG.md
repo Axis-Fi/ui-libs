@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.12
+
+### Patch Changes
+
+- c59d690: Mark Sepolia USDC as mintable
+
 ## 0.0.11
 
 ### Patch Changes
