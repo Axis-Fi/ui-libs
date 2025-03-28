@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.11
+
+### Patch Changes
+
+- 5a7c8bb: Use custom mintable USDC token on sepolia
+
 ## 0.0.10
 
 ### Patch Changes
