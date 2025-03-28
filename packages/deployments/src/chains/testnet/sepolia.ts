@@ -18,6 +18,7 @@ const config: AxisDeploymentConfig = {
       ...usdc,
       address: "0xf8543066281b44d909530c9b9fb6ca8f17404caf",
       decimals: 18,
+      mintable: true,
     },
     {
       ...weth,
