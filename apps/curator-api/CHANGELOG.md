@@ -1,5 +1,11 @@
 # @axis-finance/curator-api
 
+## 0.0.30
+
+### Patch Changes
+
+- 219fdae: Enable ethereum mainnet production curator registry
+
 ## 0.0.29
 
 ### Patch Changes
