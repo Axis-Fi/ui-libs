@@ -1,13 +1,13 @@
 import type { Address } from "viem";
-import { baseSepolia, base } from "viem/chains";
+import { baseSepolia, mainnet } from "viem/chains";
 
 const registry =
   // TODO: pull this from deployments package once they're stored in there
   process.env.NODE_ENV === "production"
     ? {
-        // base mainnet
-        address: "0xA12307d3cba3F0854cf92faDce07f7bff0B6a2BA" as Address,
-        chain: base,
+        // ethereum mainnet
+        address: "0x7020638419355ae9fb5a124c580a05226aea9158" as Address,
+        chain: mainnet,
       }
     : {
         // base testnet
