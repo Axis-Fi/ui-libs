@@ -2,10 +2,9 @@ import { base } from "viem/chains";
 import type { AxisDeploymentConfig } from "../../types";
 import core from "../../axis-core/.base.json";
 import periphery from "../../axis-periphery/.base.json";
-import { extractCallbacks, extractAddresses } from "../helpers";
+import { extractCallbacks, extractAddresses, extractUtils } from "../helpers";
 import { usdc, weth } from "../../tokens/common";
-import registry from "../../axis-utils/.base.json";
-import { Address } from "@axis-finance/types";
+import utils from "../../axis-utils/.base.json";
 
 const config: AxisDeploymentConfig = {
   name: "base",
@@ -28,7 +27,7 @@ const config: AxisDeploymentConfig = {
   ],
   ...extractAddresses(core),
   ...extractCallbacks(periphery),
-  registry: registry["deployments.utils.registry"][0] as Address,
+  ...extractUtils(utils),
 };
 
 export default config;

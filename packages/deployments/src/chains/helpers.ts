@@ -1,9 +1,11 @@
 import type { Address } from "@axis-finance/types";
 import coreSample from "../axis-core/.arbitrum-one.json";
 import peripherySample from "../axis-periphery/.blast.json";
+import utilsSample from "../axis-utils/.base.json";
 
 type AxisCoreAddresses = Record<keyof typeof coreSample, string>;
 type AxisPeripheryAddresses = Record<keyof typeof peripherySample, string[]>;
+type AxisUtilsAddresses = Record<keyof typeof utilsSample, string[]>;
 
 export function extractAddresses(addresses: Partial<AxisCoreAddresses>) {
   return {
@@ -61,5 +63,11 @@ export function extractCallbacks(addresses: Partial<AxisPeripheryAddresses>) {
         "deployments.callbacks.BatchUniswapV3DirectToLiquidityWithAllocatedAllowlist"
       ] as Address[],
     },
+  };
+}
+
+export function extractUtils(addresses: Partial<AxisUtilsAddresses>) {
+  return {
+    registry: addresses["deployments.utils.registry"]?.[0] as Address,
   };
 }

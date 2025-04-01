@@ -2,7 +2,8 @@ import { mainnet } from "viem/chains";
 import { dai, usdc, usdt, weth, lusd } from "../../tokens/common";
 import { AxisDeploymentConfig } from "../../types";
 import core from "../../axis-core/.mainnet.json";
-import { extractAddresses } from "../helpers";
+import utils from "../../axis-utils/.mainnet.json";
+import { extractAddresses, extractUtils } from "../helpers";
 
 const config: AxisDeploymentConfig = {
   name: "mainnet",
@@ -36,6 +37,7 @@ const config: AxisDeploymentConfig = {
     },
   ],
   ...extractAddresses(core),
+  ...extractUtils(utils),
 };
 
 export default config;
