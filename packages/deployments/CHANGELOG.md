@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.14
+
+### Patch Changes
+
+- fadc40a: fix create deployment function to include registry address
+
 ## 0.0.13
 
 ### Patch Changes
