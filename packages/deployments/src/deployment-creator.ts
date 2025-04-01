@@ -9,6 +9,7 @@ export function createDeployment(config: AxisDeploymentConfig): AxisDeployment {
     name: config.name,
     addresses: config.addresses,
     callbacks: config.callbacks,
+    registry: config.registry,
     subgraphURL: withVersion(config.subgraphURL, subgraphConfig.version),
     chain: withCustomConfiguration(config),
     tokenList: withMetadata(config.tokenList, config.chain.id),
