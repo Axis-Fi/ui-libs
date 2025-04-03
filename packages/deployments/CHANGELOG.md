@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.15
+
+### Patch Changes
+
+- b58f8de: Use latest subgraph for mainnet and sepolia
+
 ## 0.0.14
 
 ### Patch Changes
