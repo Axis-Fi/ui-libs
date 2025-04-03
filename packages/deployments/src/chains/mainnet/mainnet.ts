@@ -10,7 +10,7 @@ const config: AxisDeploymentConfig = {
   chain: mainnet,
   chainIconUrl: "/mainnet-logo.png",
   subgraphURL:
-    "https://subgraph.satsuma-prod.com/44c4cc082f74/spaces-team/axis-origin-mainnet/version/v<VERSION>/api",
+    "https://subgraph.satsuma-prod.com/44c4cc082f74/spaces-team/axis-origin-mainnet/version/v1.0.6.3/api",
   rpcURL:
     "https://eth-mainnet.g.alchemy.com/v2/h6OEviwRZGmTSXHYPRmMquo5u-YoWLeY",
   wrapperContract: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
