@@ -1,5 +1,11 @@
 # @axis-finance/types
 
+## 0.0.22
+
+### Patch Changes
+
+- bb07b2b: Curato from SC
+
 ## 0.0.21
 
 ### Patch Changes
