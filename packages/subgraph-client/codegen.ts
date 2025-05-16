@@ -1,7 +1,7 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const ENDPOINT =
-  "https://subgraph.satsuma-prod.com/44c4cc082f74/spaces-team/axis-origin-base/version/v1.0.6/api";
+  "https://subgraph.satsuma-prod.com/44c4cc082f74/spaces-team/axis-origin-base/version/v1.0.7/api";
 
 const config: CodegenConfig = {
   schema: ENDPOINT,

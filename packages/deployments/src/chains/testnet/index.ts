@@ -4,6 +4,7 @@ import modeTestnet from "./mode-testnet";
 import baseSepolia from "./base-sepolia";
 import mantleSepolia from "./mantle-sepolia";
 import sepolia from "./sepolia";
+import monadTestnet from "./monad-testnet";
 
 export default [
   blastSepolia,
@@ -12,4 +13,5 @@ export default [
   baseSepolia,
   mantleSepolia,
   sepolia,
+  monadTestnet,
 ];
