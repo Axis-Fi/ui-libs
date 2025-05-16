@@ -25,11 +25,11 @@ jobs:
           node-version: "21.6.0"
           cache: "pnpm"
 
-      - name: Setup Playwright
-        run: pnpx playwright install chromium --with-deps --only-shell
-
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+
+      - name: Setup Playwright
+        run: pnpx playwright@1.50.1 install chromium --with-deps --only-shell
 
       - name: Build
         run: pnpm build

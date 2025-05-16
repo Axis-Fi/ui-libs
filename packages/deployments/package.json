@@ -26,7 +26,6 @@
     "@axis-finance/tsup-config": "workspace:*"
   },
   "scripts": {
-    "sync": "node ./get-deployments.cjs",
     "build": "tsup"
   }
 }
