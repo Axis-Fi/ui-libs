@@ -1,5 +1,11 @@
 # @axis-finance/deployments
 
+## 0.0.16
+
+### Patch Changes
+
+- b4530eb: Add support for new chains
+
 ## 0.0.15
 
 ### Patch Changes
