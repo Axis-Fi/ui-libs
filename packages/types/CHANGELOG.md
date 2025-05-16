@@ -1,5 +1,12 @@
 # @axis-finance/types
 
+## 0.0.23
+
+### Patch Changes
+
+- Updated dependencies [b4530eb]
+  - @axis-finance/subgraph-client@0.0.12
+
 ## 0.0.22
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @axis-finance/subgraph-client
 
+## 0.0.12
+
+### Patch Changes
+
+- b4530eb: Add support for new chains
+
 ## 0.0.11
 
 ### Patch Changes
